@@ -1,10 +1,10 @@
+https://zade23.github.io/about/index.html
 https://zade23.github.io/2023/05/16/hello-world/
 https://zade23.github.io/2023/05/16/your-first-post/
-https://zade23.github.io/about/index.html
 https://zade23.github.io/tags/index.html
 https://zade23.github.io/categories/index.html
 https://zade23.github.io/repository/index.html
 https://zade23.github.io/
-https://zade23.github.io/tags/test/
 https://zade23.github.io/tags/Hexo/
+https://zade23.github.io/tags/test/
 https://zade23.github.io/categories/whatever/
