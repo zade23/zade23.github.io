@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/repository/index.html</loc>
+    <loc>https://zade23.github.io/2023/05/16/hello-world/</loc>
     
     <lastmod>2023-05-18</lastmod>
     
@@ -11,18 +11,45 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/05/16/your-first-post/</loc>
+    <loc>https://zade23.github.io/2023/05/16/your-first-post/</loc>
     
-    <lastmod>2023-05-16</lastmod>
+    <lastmod>2023-05-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/2023/05/16/hello-world/</loc>
+    <loc>https://zade23.github.io/about/index.html</loc>
     
-    <lastmod>2023-05-16</lastmod>
+    <lastmod>2023-05-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zade23.github.io/tags/index.html</loc>
+    
+    <lastmod>2023-05-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zade23.github.io/categories/index.html</loc>
+    
+    <lastmod>2023-05-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zade23.github.io/repository/index.html</loc>
+    
+    <lastmod>2023-05-18</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -30,13 +57,34 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://zade23.github.io/</loc>
     <lastmod>2023-05-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>https://zade23.github.io/tags/test/</loc>
+    <lastmod>2023-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zade23.github.io/tags/Hexo/</loc>
+    <lastmod>2023-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://zade23.github.io/categories/whatever/</loc>
+    <lastmod>2023-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
