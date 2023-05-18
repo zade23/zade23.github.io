@@ -1,0 +1,4 @@
+http://example.com/repository/index.html
+http://example.com/2023/05/16/your-first-post/
+http://example.com/2023/05/16/hello-world/
+http://example.com/
