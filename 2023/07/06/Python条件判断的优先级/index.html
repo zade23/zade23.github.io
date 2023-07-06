@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Python条件判断的优先级 | ANdRoid&#39;s BLOG</title>
+  <meta name="description" content="背景做LeetCode的时候经常能够发现很多基本功不扎实的问题。这一次是在做一道简单题时候忽视的条件判断优先级的问题  题目连接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;count-the-number-of-vowel-strings-in-range  代码部分 问题代码12345678910class Solution:    def vowelStrings(self,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python条件判断的优先级">
+<meta property="og:url" content="https://zade23.github.io/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/index.html">
+<meta property="og:site_name" content="ANdRoid&#39;s BLOG">
+<meta property="og:description" content="背景做LeetCode的时候经常能够发现很多基本功不扎实的问题。这一次是在做一道简单题时候忽视的条件判断优先级的问题  题目连接：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;count-the-number-of-vowel-strings-in-range  代码部分 问题代码12345678910class Solution:    def vowelStrings(self,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-06T12:53:13.000Z">
+<meta property="article:modified_time" content="2023-07-06T13:00:54.121Z">
+<meta property="article:author" content="Android">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zade23.github.io/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="ANdRoid&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zade23" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Android</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student &amp; Coder</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> GuangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zade23" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/5382156286" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>别想那么多，去码头整点儿薯条吧</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Algorithm/" rel="tag">Algorithm</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 14px;">Algorithm</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/LeetCode/" style="font-size: 13px;">LeetCode</a> <a href="/tags/test/" style="font-size: 13px;">test</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/" class="title">Python条件判断的优先级</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-07-06T12:53:13.000Z" itemprop="datePublished">2023-07-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%95%B0%E5%AD%A6/">数学</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/05/19/%E6%8E%92%E5%88%97%E5%85%AC%E5%BC%8F%E5%92%8C%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%81%E6%98%8E/" class="title">排列公式和组合公式的详细证明</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-05-19T07:08:26.000Z" itemprop="datePublished">2023-05-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/whatever/">whatever</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/05/16/your-first-post/" class="title">your-first-post</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-05-16T09:45:58.000Z" itemprop="datePublished">2023-05-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/whatever/">whatever</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/05/16/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-05-16T09:45:58.000Z" itemprop="datePublished">2023-05-16</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Python条件判断的优先级" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python条件判断的优先级
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/" class="article-date">
+	  <time datetime="2023-07-06T12:53:13.000Z" itemprop="datePublished">2023-07-06</time>
+	</a>
+</span>
+        
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Algorithm/" rel="tag">Algorithm</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>做LeetCode的时候经常能够发现很多基本功不扎实的问题。<br>这一次是在做一道简单题时候忽视的<strong>条件判断</strong>优先级的问题</p>
+<blockquote>
+<p>题目连接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-the-number-of-vowel-strings-in-range">https://leetcode.cn/problems/count-the-number-of-vowel-strings-in-range</a></p>
+</blockquote>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><hr>
+<h3 id="问题代码"><a href="#问题代码" class="headerlink" title="问题代码"></a>问题代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], left: <span class="built_in">int</span>, right: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        words = words[left : right + <span class="number">1</span>]</span><br><span class="line">        n = <span class="built_in">len</span>(words)</span><br><span class="line">        <span class="built_in">print</span>(n)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;u&#x27;</span> <span class="keyword">and</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;u&#x27;</span>:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="正确代码"><a href="#正确代码" class="headerlink" title="正确代码"></a>正确代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">vowelStrings</span>(<span class="params">self, words: <span class="type">List</span>[<span class="built_in">str</span>], left: <span class="built_in">int</span>, right: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        words = words[left : right + <span class="number">1</span>]</span><br><span class="line">        n = <span class="built_in">len</span>(words)</span><br><span class="line">        <span class="built_in">print</span>(n)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;u&#x27;</span>:</span><br><span class="line">                <span class="keyword">if</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;u&#x27;</span>:</span><br><span class="line">                    res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>二者的差别就在如何衔接 <code>or</code> 和 <code>and</code> 之间的关系上。</p>
+<h2 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h2><p>分析错误代码的bug：</p>
+<p>在第二段错误代码中，条件判断部分存在问题。以下是有问题的代码片段：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;u&#x27;</span> <span class="keyword">and</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;u&#x27;</span>:</span><br><span class="line">    res += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>问题出在逻辑运算符的优先级上。在Python中，<code>and</code> 运算符的优先级高于 <code>or</code> 运算符，因此该条件判断实际上被解释为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> (words[i][<span class="number">0</span>] == <span class="string">&#x27;u&#x27;</span> <span class="keyword">and</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span>) <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;u&#x27;</span>:</span><br><span class="line">    res += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>由于 <code>or</code> 运算符的短路特性，只要 <code>words[i][0]</code> 的首字母为元音字母之一，整个条件判断就会被认为是True，导致res增加。而第二个部分 <code>words[i][-1] == &#39;a&#39;</code>、<code>words[i][-1] == &#39;e&#39;</code>等都是单独的条件，不会影响整个条件判断的结果。</p>
+<p>修正该bug的方法是使用括号明确指定条件的分组，确保逻辑关系正确。以下是修正后的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (words[i][<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][<span class="number">0</span>] == <span class="string">&#x27;u&#x27;</span>) <span class="keyword">and</span> (words[i][-<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;e&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;i&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;o&#x27;</span> <span class="keyword">or</span> words[i][-<span class="number">1</span>] == <span class="string">&#x27;u&#x27;</span>):</span><br><span class="line">    res += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>这样修改后，条件判断会首先检查首字母是否为元音字母，然后再检查末尾字母是否为元音字母，两个条件都满足时才会增加res的值。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://zade23.github.io/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/" title="Python条件判断的优先级" target="_blank" rel="external">https://zade23.github.io/2023/07/06/Python条件判断的优先级/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zade23" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zade23" target="_blank"><span class="text-dark">Android</span><small class="ml-1x">Student &amp; Coder</small></a></h3>
+        <div>Happy Coding!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2023/05/19/%E6%8E%92%E5%88%97%E5%85%AC%E5%BC%8F%E5%92%8C%E7%BB%84%E5%90%88%E5%85%AC%E5%BC%8F%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%81%E6%98%8E/" title="排列公式和组合公式的详细证明"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zade23" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/5382156286" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
