@@ -1,4 +1,5 @@
 https://zade23.github.io/2023/10/31/pytorch-tutorial-official/
+https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zade23.github.io/2023/10/23/Go%E8%AF%AD%E8%A8%80%E9%80%9F%E9%80%9A/
 https://zade23.github.io/2023/10/19/Python%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86-try-except/
 https://zade23.github.io/2023/10/18/Python%E5%85%83%E7%BB%84%E9%9B%86%E5%90%88%E5%AD%97%E5%85%B8/
