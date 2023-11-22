@@ -1,3 +1,4 @@
+https://zade23.github.io/2023/11/22/conda%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%EF%BC%9Ainvalid-choice-activate/
 https://zade23.github.io/2023/10/31/pytorch-tutorial-official/
 https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zade23.github.io/2023/10/23/Go%E8%AF%AD%E8%A8%80%E9%80%9F%E9%80%9A/
