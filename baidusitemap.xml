@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://zade23.github.io/2024/03/07/%E6%9B%B4%E6%96%B0GitLab%E4%BB%93%E5%BA%93SSH/</loc>
+    <lastmod>2024-03-07</lastmod>
+  </url>
+  <url>
     <loc>https://zade23.github.io/2023/11/22/conda%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%EF%BC%9Ainvalid-choice-activate/</loc>
-    <lastmod>2023-11-22</lastmod>
+    <lastmod>2024-03-07</lastmod>
   </url>
   <url>
     <loc>https://zade23.github.io/2023/10/31/pytorch-tutorial-official/</loc>
-    <lastmod>2023-11-20</lastmod>
+    <lastmod>2024-03-07</lastmod>
+  </url>
+  <url>
+    <loc>https://zade23.github.io/2023/10/16/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E2%80%94%E2%80%94%E6%B5%81%E5%8A%A8%E6%80%A7%E9%99%B7%E9%98%B1/</loc>
+    <lastmod>2024-03-07</lastmod>
   </url>
   <url>
     <loc>https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
@@ -22,10 +30,6 @@
   </url>
   <url>
     <loc>https://zade23.github.io/2023/10/18/Python%E5%85%83%E7%BB%84%E9%9B%86%E5%90%88%E5%AD%97%E5%85%B8/</loc>
-    <lastmod>2023-10-19</lastmod>
-  </url>
-  <url>
-    <loc>https://zade23.github.io/2023/10/16/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E2%80%94%E2%80%94%E6%B5%81%E5%8A%A8%E6%80%A7%E9%99%B7%E9%98%B1/</loc>
     <lastmod>2023-10-19</lastmod>
   </url>
   <url>
