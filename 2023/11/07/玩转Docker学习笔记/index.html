@@ -18,15 +18,15 @@
   
   
   <title>玩转Docker学习笔记 | ANdRoid&#39;s BLOG</title>
-  <meta name="description" content="镜像相关指令 容器相关指令 网络相关指令 数据卷相关指令 Docker Compose相关指令（使用docker-compose）   镜像相关指令 docker pull &lt;image&gt;：从远程仓库拉取一个镜像或仓库到本地。 docker build -t &lt;tag&gt; .：使用当前目录的Dockerfile构建一个新的镜像。 docker images：列出本地存储的镜">
+  <meta name="description" content="镜像相关指令 容器相关指令 网络相关指令 数据卷相关指令 Docker Compose相关指令（使用docker-compose） 通过 DockerFile 构建 Docker Image   镜像相关指令 docker pull &lt;image&gt;：从远程仓库拉取一个镜像或仓库到本地。 docker build -t &lt;tag&gt; .：使用当前目录的Dockerfile构建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="玩转Docker学习笔记">
 <meta property="og:url" content="https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="ANdRoid&#39;s BLOG">
-<meta property="og:description" content="镜像相关指令 容器相关指令 网络相关指令 数据卷相关指令 Docker Compose相关指令（使用docker-compose）   镜像相关指令 docker pull &lt;image&gt;：从远程仓库拉取一个镜像或仓库到本地。 docker build -t &lt;tag&gt; .：使用当前目录的Dockerfile构建一个新的镜像。 docker images：列出本地存储的镜">
+<meta property="og:description" content="镜像相关指令 容器相关指令 网络相关指令 数据卷相关指令 Docker Compose相关指令（使用docker-compose） 通过 DockerFile 构建 Docker Image   镜像相关指令 docker pull &lt;image&gt;：从远程仓库拉取一个镜像或仓库到本地。 docker build -t &lt;tag&gt; .：使用当前目录的Dockerfile构建">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-07T07:30:56.000Z">
-<meta property="article:modified_time" content="2024-03-11T08:41:49.069Z">
+<meta property="article:modified_time" content="2024-03-11T09:54:39.179Z">
 <meta property="article:author" content="Android">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -370,6 +370,7 @@
 <li><a href="#%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4">网络相关指令</a></li>
 <li><a href="#%E6%95%B0%E6%8D%AE%E5%8D%B7%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4">数据卷相关指令</a></li>
 <li><a href="#docker-compose%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8docker-compose">Docker Compose相关指令（使用<code>docker-compose</code>）</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87-dockerfile-%E6%9E%84%E5%BB%BA-docker-image">通过 DockerFile 构建 Docker Image</a></li>
 </ul>
 <hr>
 <h3 id="镜像相关指令"><a href="#镜像相关指令" class="headerlink" title="镜像相关指令"></a>镜像相关指令</h3><ul>
@@ -410,10 +411,42 @@
 <li><code>docker-compose logs</code>：查看服务的日志输出。</li>
 </ul>
 <p>这些命令代表了Docker操作的基础，但是实际使用中可能还会遇到更复杂的场景和高级特性。建议通过官方文档或其他学习资源深入理解每个命令的用法和选项。</p>
+<h3 id="通过-DockerFile-构建-Docker-Image"><a href="#通过-DockerFile-构建-Docker-Image" class="headerlink" title="通过 DockerFile 构建 Docker Image"></a>通过 DockerFile 构建 Docker Image</h3><p>一个 Image 是通过一个 DockerFile 定义的，然后使用 docker build 命令构建它。</p>
+<p>DockerFile 中的每一条命令的执行结果都会成为 Image 中的一个 Layer。</p>
+<p>这里，我们通过 Build 一个镜像，来观察 Image 的分层机制：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方的Python运行时环境作为基础镜像</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">2.7</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作目录为容器内的/app。如果目录不存在，Docker会自动为你创建这个目录。</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将当前目录（Dockerfile所在目录）的内容复制到容器内的/app目录中。</span></span><br><span class="line"><span class="comment"># 这意味着你的应用代码和依赖文件（比如requirements.txt）都会被复制进去。</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用RUN命令执行pip安装命令来安装requirements.txt中列出的所有依赖。</span></span><br><span class="line"><span class="comment"># 这里使用了--trusted-host选项来指定可信的PyPI主机，避免SSL证书验证问题。</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install --trusted-host pypi.python.org -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用EXPOSE指令来告诉Docker容器内的应用将会在80端口上监听连接。</span></span><br><span class="line"><span class="comment"># 需要注意的是，EXPOSE指令本身不会使容器的端口对外界开放，</span></span><br><span class="line"><span class="comment"># 它更多的是一种文档化的作用，真正的端口映射需要在运行容器时通过docker run的-p选项来指定。</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用ENV指令设置一个环境变量。这里定义了一个名为NAME的环境变量，值为World。</span></span><br><span class="line"><span class="comment"># 环境变量可以在容器运行时被应用程序读取，用于配置应用行为。</span></span><br><span class="line"><span class="keyword">ENV</span> NAME World</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用CMD指令指定容器启动时运行的命令。</span></span><br><span class="line"><span class="comment"># 这里的命令是“python app.py”，即使用Python解释器来运行app.py脚本。</span></span><br><span class="line"><span class="comment"># CMD的主要作用是指定容器的默认执行命令。如果在docker run命令后面指定了其他命令，CMD指定的命令将被覆盖。</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;app.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+
+<p>这份<code>Dockerfile</code>基本上覆盖了构建一个简单Python应用的Docker镜像所需的所有步骤。从选择基础镜像开始，设置工作目录，复制应用代码，安装依赖，到最后指定运行时的命令和暴露的端口，每一步都为镜像的构建提供了必要的指令和配置。</p>
+<p>最终的构建结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@rds-k8s-18-svr0:~/xuran/exampleimage# docker build -t hello ./</span><br><span class="line">Sending build context to Docker daemon  5.12 kB</span><br><span class="line">Step 1/7 : FROM python:2.7-slim</span><br><span class="line"> ---&gt; 804b0a01ea83</span><br><span class="line">Step 2/7 : WORKDIR /app</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 6d93c5b91703</span><br><span class="line">Step 3/7 : COPY . /app</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; feddc82d321b</span><br><span class="line">Step 4/7 : RUN pip install --trusted-host pypi.python.org -r requirements.txt</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 94695df5e14d</span><br><span class="line">Step 5/7 : EXPOSE 81</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 43c392d51dff</span><br><span class="line">Step 6/7 : ENV NAME World</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 78c9a60237c8</span><br><span class="line">Step 7/7 : CMD python app.py</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; a5ccd4e1b15d</span><br><span class="line">Successfully built a5ccd4e1b15d</span><br></pre></td></tr></table></figure>
+
+<p>下面是对这些信息每一步的详细解释：</p>
+<ul>
+<li><p><strong>Sending build context to Docker daemon 5.12 kB</strong><br>这一行表示Docker客户端正在将构建上下文发送给Docker守护进程。构建上下文是指Dockerfile所在目录的内容，Docker会将这些内容打包发送给守护进程。这里的大小是5.12kB，表示你的应用代码和依赖文件等总共大小。</p>
+</li>
+<li><p><strong>Step 1&#x2F;7 : FROM python:2.7-slim</strong><br>这是Dockerfile中的第一步，它基于<code>python:2.7-slim</code>这个镜像来构建新的镜像。<code>---&gt; 804b0a01ea83</code>是基础镜像的ID。</p>
+</li>
+<li><p><strong>Step 2&#x2F;7 : WORKDIR &#x2F;app</strong><br>设置工作目录为<code>/app</code>。如果不存在，Docker会自动创建这个目录。<code>---&gt; Using cache ---&gt; 6d93c5b91703</code>表示这一步使用了缓存，<code>6d93c5b91703</code>是这一层的ID。</p>
+</li>
+<li><p><strong>Step 3&#x2F;7 : COPY . &#x2F;app</strong><br>将构建上下文（Dockerfile所在的目录）的内容复制到容器内的<code>/app</code>目录。<code>---&gt; Using cache ---&gt; feddc82d321b</code>表明这一步也使用了缓存。</p>
+</li>
+<li><p><strong>Step 4&#x2F;7 : RUN pip install –trusted-host pypi.python.org -r requirements.txt</strong><br>在容器内执行<code>pip install</code>命令，安装<code>requirements.txt</code>文件中列出的Python依赖包。<code>---&gt; Using cache ---&gt; 94695df5e14d</code>说明这一步同样使用了缓存。</p>
+</li>
+<li><p><strong>Step 5&#x2F;7 : EXPOSE 81</strong><br>通知Docker容器在运行时将会监听81端口。注意这里与前面提到的Dockerfile中的<code>EXPOSE 80</code>不同，可能是因为Dockerfile被修改了但构建输出没有更新。<code>---&gt; Using cache ---&gt; 43c392d51dff</code>表示使用了缓存。</p>
+</li>
+<li><p><strong>Step 6&#x2F;7 : ENV NAME World</strong><br>设置环境变量<code>NAME</code>的值为<code>World</code>。这个环境变量可以在容器运行时被应用程序使用。<code>---&gt; Using cache ---&gt; 78c9a60237c8</code>也显示这一步使用了缓存。</p>
+</li>
+<li><p><strong>Step 7&#x2F;7 : CMD [“python”, “app.py”]</strong><br>指定容器启动时默认执行的命令。这里是运行<code>app.py</code>脚本。<code>---&gt; Using cache ---&gt; a5ccd4e1b15d</code>意味着这一步也利用了之前的构建缓存。</p>
+</li>
+<li><p><strong>Successfully built a5ccd4e1b15d</strong><br>最后，显示了成功构建的镜像ID为<code>a5ccd4e1b15d</code>。</p>
+</li>
+</ul>
+<p>在这个过程中，<code>Using cache</code>表明Docker发现之前的构建步骤与当前的完全一致，因此它复用了之前的结果来加快构建过程。如果你想要强制Docker重新执行每个步骤而不使用缓存，可以在构建时添加<code>--no-cache</code>选项。</p>
 <hr>
 <p>参考链接：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://www.docker.com/101-tutorial/">Docker 101 Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="http://t.csdnimg.cn/cApYV">Docker原理（图解+秒懂+史上最全）</a></li>
 </ul>
 
       
