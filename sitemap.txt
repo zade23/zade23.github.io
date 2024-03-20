@@ -1,3 +1,4 @@
+https://zade23.github.io/2024/03/19/LLaMA-Factory%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/
 https://zade23.github.io/2024/03/11/%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/
 https://zade23.github.io/2024/03/13/Python%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85%E5%AF%BC%E5%85%A5%E5%92%8C%E5%8C%85%E7%9A%84%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/
 https://zade23.github.io/about/index.html
@@ -29,7 +30,9 @@ https://zade23.github.io/tags/conda/
 https://zade23.github.io/tags/environment/
 https://zade23.github.io/tags/C/
 https://zade23.github.io/tags/PyTorch/
+https://zade23.github.io/tags/Training/
 https://zade23.github.io/categories/whatever/
 https://zade23.github.io/categories/Git-Workflow/
 https://zade23.github.io/categories/Algorithm/
 https://zade23.github.io/categories/Deeplearning/
+https://zade23.github.io/categories/LLM/
