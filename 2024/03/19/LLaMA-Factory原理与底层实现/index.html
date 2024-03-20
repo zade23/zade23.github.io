@@ -26,7 +26,7 @@
 <meta property="og:description" content="LLaMA-Factory的简要介绍简化大模型训练的工具 从 Pre-train → SFT（监督微调，supervised fine-tuning）→ RLHF（基于人类反馈的强化学习，reinforcement learning human feedback），一步完成。 一张4090完成70B参数的模型微调。 效率： 算子上提高两倍提速和60%的缓存节省。 一键完成。 通过分布式框架，甚至可">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-19T02:53:47.000Z">
-<meta property="article:modified_time" content="2024-03-20T13:09:37.307Z">
+<meta property="article:modified_time" content="2024-03-20T13:30:21.869Z">
 <meta property="article:author" content="Android">
 <meta property="article:tag" content="Training">
 <meta name="twitter:card" content="summary">
@@ -401,7 +401,7 @@
 <h3 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h3><p>在开始将解SFT之前，首先讲解一下预训练。</p>
 <p>预训练是模型训练过程中必要的一个阶段，在有大量无标注的语料情况下，我们希望可以先不进行标注。通过大量的无标注数据的预训练方法，使得模型在我们相关领域的数据上表现的更好(思考为什么？)。</p>
 <p>这里我们使用类似GPT3的<strong>自回归模型（auto-regressive language model）</strong>，根据前i-1个tokens来预测第i个token的能力。</p>
-<p>在持续训练的过程中，使用传统的因果建模的方式，通过计算交叉熵损失的方式来最小化下面这个对数似然的损失来实现模型的优化。<br>$$<br>\mathcal{L}<em>{\mathrm{CLM}}&#x3D;-\frac{1}{n} \sum</em>{i&#x3D;1}^{n} \log P\left(x_{i} \mid x_{1}, x_{2}, \ldots, x_{i-1} ; \theta\right)<br>$$<br>它的优势是：通过无监督的方式来完成一系列优化。</p>
+<p>在持续训练的过程中，使用传统的因果建模的方式，通过计算交叉熵损失的方式来最小化下面这个对数似然的损失来实现模型的优化。<br>$$<br>\mathcal{L}_ {\mathrm{CLM}}&#x3D;-\frac{1}{n} \sum_ {i&#x3D;1}^{n} \log P\left(x_ {i} \mid x_ {1}, x_ {2}, \ldots, x_ {i-1} ; \theta\right)<br>$$<br>它的优势是：通过无监督的方式来完成一系列优化。</p>
 <h2 id="预训练阶段的语料处理"><a href="#预训练阶段的语料处理" class="headerlink" title="预训练阶段的语料处理"></a>预训练阶段的语料处理</h2><p>这里，处理这种预训练阶段的数据最高效的方法有两种，分别是序列打包方法（sequence packing）和数据的流式加载的（data streaming），下面对二者分别进行介绍。</p>
 <h3 id="序列打包方法"><a href="#序列打包方法" class="headerlink" title="序列打包方法"></a>序列打包方法</h3><p>将不同长度的序列打包在一起，省去padding的过程。如图中的过程，左侧的序列是没有打包过的序列，右边序列是打包过的序列。如果我们假设 batch_size &#x3D; 1，则处理左边的序列需要4次；处理右边的序列只需要3次。</p>
 <blockquote>
@@ -411,22 +411,22 @@
 <p>通常情况下，默认会使用 sequence packing 的方法处理序列数据。</p>
 <h3 id="数据的流式加载"><a href="#数据的流式加载" class="headerlink" title="数据的流式加载"></a>数据的流式加载</h3><p>下面的这一种数据流式加载技术，主要是为了极大的洁身CPU的内存。通常，我们预期的阶段需要用到几百GB的内存，在使用了数据的流式加载技术后可以节省巨大的内存占用，同时可以避免在分布式训练上造成超时的问题。</p>
 <h2 id="监督微调"><a href="#监督微调" class="headerlink" title="监督微调"></a>监督微调</h2><p>在经历了一系列优化工作后，监督微调（SFT，Supervised Fine-Tuning）通过<strong>问答对</strong>的形式进行一个 sequence to sequence 的学习。</p>
-<p>这一阶段的方法和预训练阶段的损失是一样的，采用交叉熵损失。<br>$$<br>\mathcal{L}<em>{\mathrm{SFT}}&#x3D;-\frac{1}{n} \sum</em>{i&#x3D;1}^{n} \log P\left(y_{i} \mid x_{1}, x_{2}, \ldots, x_{m} ,y_{1}, y_{2}, \ldots, y_{i-1} ; \theta\right)<br>$$<br>在公式中，x代表问答对中的问题，y代表问答对中的回复。在计算损失的过程中，只计算y上面的损失，对于x一般是不计算损失的。</p>
+<p>这一阶段的方法和预训练阶段的损失是一样的，采用交叉熵损失。<br>$$<br>\mathcal{L}_ {\mathrm{SFT}}&#x3D;-\frac{1}{n} \sum_ {i&#x3D;1}^{n} \log P\left(y_{i} \mid x_ {1}, x_ {2}, \ldots, x_ {m} ,y_ {1}, y_ {2}, \ldots, y_ {i-1} ; \theta\right)<br>$$<br>在公式中，x代表问答对中的问题，y代表问答对中的回复。在计算损失的过程中，只计算y上面的损失，对于x一般是不计算损失的。</p>
 <p>在LLaMA-Factory中，主要就是针对这个多轮对话的数据集去优化sft的loss计算方式。</p>
 <p>在多轮对话数据集中，只要计算一次前向传播。</p>
 <p>在模型输出的损失函数计算中，将终止标签<code>eos</code>标注添加到标准输出中，这样可以帮助模型学习到在什么位置进行停止。提高5%到10%的运算效率。</p>
-<h3 id="奖励模型"><a href="#奖励模型" class="headerlink" title="奖励模型"></a>奖励模型</h3><p>奖励模型使用 pairwise ranking loss 来计算损失：<br>$$<br>\mathcal{L}<em>{\mathrm{RM}}&#x3D;-\sum</em>{(x,y^c,y^r)}\log\left(\sigma(r_\theta(x,y^c)-r_\theta(x,y^r))\right)<br>$$<br>其中，yc代表了更好的回复，yr代表了更差的回复，r就是对答案的打分。这个函数希望对好回答的打分高于差回答的打分。</p>
+<h3 id="奖励模型"><a href="#奖励模型" class="headerlink" title="奖励模型"></a>奖励模型</h3><p>奖励模型使用 pairwise ranking loss 来计算损失：<br>$$<br>\mathcal{L}_ {\mathrm{RM}}&#x3D;-\sum_ {(x,y^c,y^r)}\log\left(\sigma(r_ \theta(x,y^c)-r_ \theta(x,y^r))\right)<br>$$<br>其中，yc代表了更好的回复，yr代表了更差的回复，r就是对答案的打分。这个函数希望对好回答的打分高于差回答的打分。</p>
 <p>在训练过程中，会将所有的r1、r2、r3的分数一起作为参考求平均值。</p>
 <p>在推理过程中，只会参考r3的分数最为推理时候的分数。</p>
 <p>思考一个问题：为什么训练的过程中需要将句子中每一个token进行采取然后做分数计算，而不能只计算最后一个token的分数？</p>
 <p>答案是：这样会使得模型过拟合。</p>
 <p>以上是对奖励模型学习过程中的优化过程：针对最后一个输出token进行打分，用于评估奖励模型效果。</p>
 <h2 id="强化学习（PPO学习）"><a href="#强化学习（PPO学习）" class="headerlink" title="强化学习（PPO学习）"></a>强化学习（PPO学习）</h2><p>PPO学习参考一个多臂老虎机问题（bandit problem）。在大模型的过程中，会对一个Prompt产生一条随机的回复，然后奖励这个模型，并对生成的回复进行打分。PPO模型就是为了希望最大化的奖励这个模型给出的分数。</p>
-<p>除了奖励以外，还会对当前这个模型进行<strong>KL惩罚</strong>以防止PPO对模型的过度优化现象。<br>$$<br>\mathcal{J}(\phi)&#x3D;\mathbb{E}<em>{(\mathrm{x},\mathrm{y})\sim\mathcal{D}</em>{\pi_\phi^{\mathrm{PPO}}}}\left[r_\theta(x,y)-\beta\log\frac{\pi_\phi^{\mathrm{PPO}}(y|x)}{\pi^{\mathrm{SFT}}(y|x)}\right]<br>$$<br>在上面损失函数中，log后分子上的数学建模是PPO模型，分母上的建模是SFT模型。</p>
+<p>除了奖励以外，还会对当前这个模型进行<strong>KL惩罚</strong>以防止PPO对模型的过度优化现象。<br>$$<br>\mathcal{J}(\phi)&#x3D;\mathbb{E}_ {(\mathrm{x},\mathrm{y})\sim\mathcal{D}_ {\pi_\phi^{\mathrm{PPO}}}}\left[r_ \theta(x,y)-\beta\log\frac{\pi_\phi^{\mathrm{PPO}}(y|x)}{\pi^{\mathrm{SFT}}(y|x)}\right]<br>$$<br>在上面损失函数中，log后分子上的数学建模是PPO模型，分母上的建模是SFT模型。</p>
 <p>因此，可以看到，如果想要进行PPO模型的训练，就需要加载三个模型。如果只有一张显卡，就很难把三个模型都运行起来。</p>
 <h3 id="模型权重共享的方法"><a href="#模型权重共享的方法" class="headerlink" title="模型权重共享的方法"></a>模型权重共享的方法</h3><p>在三个模型中，参数的大头在backbone部分，这部分的参数和空间占了整个模型空间的98%左右。如果多次读取模型，最冗余的状态就是backbone的重复加载和卸载。</p>
 <p>这里我们引入LoRA适配器的方法，共享backbone部分参数，在训练过程中动态加载LoRA和adapter模块。</p>
-<p>PPO算法拥有一些强化学习的通病，就是难收敛。这里可以推荐一个替代的强化学习算法DPO，公式上的差别较小：<br>$$<br>\mathcal{L}<em>{\mathrm{DPO}}&#x3D;-\sum</em>{(x,y^c,y^{\prime})\sim\mathcal{D}}\left[\log\sigma\left(\beta\log\frac{\pi^{\mathrm{DPO}}(y^c|x)}{\pi^{\mathrm{SFT}}(y^c|x)}-\beta\log\frac{\pi^{\mathrm{DPO}}(y^r|x)}{\pi^{\mathrm{SFT}}(y^r|x)}\right)\right]<br>$$</p>
+<p>PPO算法拥有一些强化学习的通病，就是难收敛。这里可以推荐一个替代的强化学习算法DPO，公式上的差别较小：<br>$$<br>\mathcal{L}_ {\mathrm{DPO}}&#x3D;-\sum_ {(x,y^c,y^{\prime})\sim\mathcal{D}}\left[\log\sigma\left(\beta\log\frac{\pi^{\mathrm{DPO}}(y^c|x)}{\pi^{\mathrm{SFT}}(y^c|x)}-\beta\log\frac{\pi^{\mathrm{DPO}}(y^r|x)}{\pi^{\mathrm{SFT}}(y^r|x)}\right)\right]<br>$$</p>
 <h3 id="LLaMA-Factory在应用上的优化"><a href="#LLaMA-Factory在应用上的优化" class="headerlink" title="LLaMA-Factory在应用上的优化"></a>LLaMA-Factory在应用上的优化</h3><p>在强化学习的两个算法中，DPO收敛更快，但是更容易过拟合；PPO效果好，但是不容易收敛&#x2F;收敛慢。</p>
 <p>在LLaMA-Factory上提出了混合微调梯度的方法。</p>
 <p>将sft损失乘一个损失因子γ后，将整体值加到DPO中。由于它是一个常数项，所以并不会增加梯度计算的负担</p>
