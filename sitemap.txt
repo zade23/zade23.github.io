@@ -1,3 +1,6 @@
+https://zade23.github.io/2023/07/07/%E5%AE%8C%E5%A4%87%E5%8C%BA%E9%97%B4%E5%88%A4%E6%96%AD%E4%B8%8B%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%87%E8%83%BD%E6%A8%A1%E6%9D%BF/
+https://zade23.github.io/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/
+https://zade23.github.io/2023/07/18/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/
 https://zade23.github.io/2023/10/18/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/
 https://zade23.github.io/2023/10/16/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E2%80%94%E2%80%94%E6%B5%81%E5%8A%A8%E6%80%A7%E9%99%B7%E9%98%B1/
 https://zade23.github.io/2024/03/21/Transformers-FlashBack/
@@ -10,11 +13,8 @@ https://zade23.github.io/2024/03/13/Python%E6%A8%A1%E5%9D%97%E5%B0%81%E8%A3%85%E
 https://zade23.github.io/about/index.html
 https://zade23.github.io/2023/11/22/conda%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%EF%BC%9Ainvalid-choice-activate/
 https://zade23.github.io/2023/10/31/pytorch-tutorial-official/
-https://zade23.github.io/2023/07/07/%E5%AE%8C%E5%A4%87%E5%8C%BA%E9%97%B4%E5%88%A4%E6%96%AD%E4%B8%8B%E7%9A%84%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%87%E8%83%BD%E6%A8%A1%E6%9D%BF/
 https://zade23.github.io/2023/10/12/Python%E5%87%BD%E6%95%B0/
 https://zade23.github.io/2023/10/18/Python%E5%85%83%E7%BB%84%E9%9B%86%E5%90%88%E5%AD%97%E5%85%B8/
-https://zade23.github.io/2023/07/06/Python%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7/
-https://zade23.github.io/2023/07/18/Python%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/
 https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/
 https://zade23.github.io/2024/03/07/%E6%9B%B4%E6%96%B0GitLab%E4%BB%93%E5%BA%93SSH/
 https://zade23.github.io/2023/10/08/githun-workflow%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E4%B8%BB%E7%BA%BF%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/
@@ -36,8 +36,8 @@ https://zade23.github.io/tags/Training/
 https://zade23.github.io/tags/Transformers/
 https://zade23.github.io/categories/whatever/
 https://zade23.github.io/categories/Git-Workflow/
-https://zade23.github.io/categories/Algorithm/
 https://zade23.github.io/categories/Deeplearning/
 https://zade23.github.io/categories/LLM/
 https://zade23.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/
 https://zade23.github.io/categories/%E6%9D%82%E9%A1%B9/
+https://zade23.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/
