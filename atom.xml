@@ -6,7 +6,7 @@
   <link href="https://zade23.github.io/atom.xml" rel="self"/>
   
   <link href="https://zade23.github.io/"/>
-  <updated>2024-04-16T09:01:32.603Z</updated>
+  <updated>2024-04-22T13:39:04.926Z</updated>
   <id>https://zade23.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Unity】破解版安装指北</title>
+    <link href="https://zade23.github.io/2024/04/22/%E3%80%90Unity%E3%80%91%E7%A0%B4%E8%A7%A3%E7%89%88%E5%AE%89%E8%A3%85%E6%8C%87%E5%8C%97/"/>
+    <id>https://zade23.github.io/2024/04/22/%E3%80%90Unity%E3%80%91%E7%A0%B4%E8%A7%A3%E7%89%88%E5%AE%89%E8%A3%85%E6%8C%87%E5%8C%97/</id>
+    <published>2024-04-22T13:27:41.000Z</published>
+    <updated>2024-04-22T13:39:04.926Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><a href="#%E4%BB%8B%E7%BB%8D">介绍</a></li><li><a href="#%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9">版本选择</a></li><li><a href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">使用说明</a></li><li><a href="#%E8%B8%A9%E5%9D%91">踩坑</a></li></ul><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>个人版的Unity安装通过Unity官网一步一步进行即可。<br>今天我们聊的是：如何安装Unity的完整破解版。</p><blockquote><p>注意：以下内容仅供用于非营利性的教育和测试目的。</p></blockquote><h2 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h2><p>我当前使用的版本参数如下：</p><ul><li>Unity：2022.3.9f1</li><li>Unity Hub：3.4.2</li></ul><p>关于Unity破解版这里用到两以下两个链接：</p><ul><li><a href="https://github.com/tylearymf/UniHacker">https://github.com/tylearymf/UniHacker</a></li><li><a href="https://github.com/agentbillwh/unilic">https://github.com/agentbillwh/unilic</a></li></ul><p>以上两个GitHub工程的对应Unity项目的破解关系是：</p><p>UniHacker → Unity Hub<br>unilic → Unity</p><p>之所以这样破解的原因是为了服务于较新的Unity版本。</p><p>正常情况下UniHacker可以同时破解 Unity 和 Unity Hub，由于UniHacker可以破解的Unity版本不能高于2022.2所以我们另外使用unilic破解Unity。</p><p>如果没有许可的Unity项目在重新登录之后会提示如下界面：<br><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/A3c6EYT72l.jpg" alt="没有许可"></p><p>在这个状态下，左右两个选项都无法正常启动项目，那么就需要考虑使用个人版后果者破解版了。</p><h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>上述链接中的两个工程都是非常详细的工程，按照<code>READ.md</code>内容一步一步来即可，UniHacker更是打包成了一个<code>.exe</code>文件供用户直接破解。</p><p>UniHacker的破解结束后有两个选项：</p><ul><li>是否登录自己的账号：建议<code>否</code></li><li>是否保持更新：建议<code>否</code></li></ul><p>破解成功后，可打开原始项目。<br><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/img_v3_02a6_ede5a60a-bb44-416f-830e-e3843209257g.jpg" alt="Unity，启动"></p><h2 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h2><ol><li><p>Unity Hub 版本不能太高</p><p> 如果只破解了Unity而没有破解Unity Hub(或Unity Hub的版本过高，如图中3.7版)则会在打开项目的时候反复弹窗确认登录信息。</p></li></ol><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/img_v3_02a6_71156aec-81f4-4cef-80d0-a9f51738028g.jpg" alt="版本过高"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BB%8B%E7%BB%8D&quot;&gt;介绍&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9&quot;&gt;版本选择&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BD%BF</summary>
+      
+    
+    
+    
+    <category term="Unity" scheme="https://zade23.github.io/categories/Unity/"/>
+    
+    
+    <category term="Game Engine" scheme="https://zade23.github.io/tags/Game-Engine/"/>
+    
+  </entry>
   
   <entry>
     <title>【NLP】RWKV对比Transformer</title>
@@ -460,26 +487,6 @@
     
     
     <category term="Python" scheme="https://zade23.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>github_workflow自动合并主线失败问题</title>
-    <link href="https://zade23.github.io/2023/10/08/githun-workflow%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E4%B8%BB%E7%BA%BF%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
-    <id>https://zade23.github.io/2023/10/08/githun-workflow%E8%87%AA%E5%8A%A8%E5%90%88%E5%B9%B6%E4%B8%BB%E7%BA%BF%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/</id>
-    <published>2023-10-08T02:16:53.000Z</published>
-    <updated>2023-10-08T02:37:06.373Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="github-workflow自动提交在合并主线时出现的问题"><a href="#github-workflow自动提交在合并主线时出现的问题" class="headerlink" title="github_workflow自动提交在合并主线时出现的问题"></a>github_workflow自动提交在合并主线时出现的问题</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>看到 GitHub 上的一个好玩的项目，大意就是保持个人主页的提交栏保持尝绿，看起来很有意思，于是学着构建了一个 GitHub_actions_workflow 。仓库是用来每日清晨推送 bing 的当日壁纸的，仓库为：<a href="https://github.com/zade23/auto-green">https://github.com/zade23/auto-green</a></p><p>但是部署之后发现 Actions 的 <em>合并提交</em> 动作一直失败，报错如下：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">remote:</span> <span class="string">Permission</span> <span class="string">to</span> <span class="string">zade23/auto-green.git</span> <span class="string">denied</span> <span class="string">to</span> <span class="string">github-actions[bot].</span></span><br><span class="line"><span class="attr">fatal:</span> <span class="string">unable</span> <span class="string">to</span> <span class="string">access</span> <span class="attr">&#x27;https://github.com/zade23/auto-green.git/&#x27;:</span> <span class="attr">The requested URL returned error:</span> <span class="number">403</span></span><br><span class="line"><span class="attr">Error: Invalid exit code:</span> <span class="number">128</span></span><br><span class="line">    <span class="string">at</span> <span class="string">ChildProcess.&lt;anonymous&gt;</span> <span class="string">(/home/runner/work/_actions/ad-m/github-push-action/master/start.js:30:21)</span></span><br><span class="line">    <span class="string">at</span> <span class="string">ChildProcess.emit</span> <span class="string">(node:events:513:28)</span></span><br><span class="line">    <span class="string">at</span> <span class="string">maybeClose</span> <span class="string">(node:internal/child_process:1100:16)</span></span><br><span class="line">    <span class="string">at</span> <span class="string">Process.ChildProcess._handle.onexit</span> <span class="string">(node:internal/child_process:304:5)</span> &#123;</span><br><span class="line">  <span class="attr">code:</span> <span class="number">128</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>分析主要问题，应试这段 <code>The requested URL returned error: 403</code> 。</p><p>最终在 Stack Overflow 上找到了解决办法：</p><p><a href="https://stackoverflow.com/questions/73687176/permission-denied-to-github-actionsbot-the-requested-url-returned-error-403">Permission denied to github-actions[bot]. The requested URL returned error: 403</a></p><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>GitHub Actions 中自动提交功能必须在对应仓库下面手动设置允许 bot 合并提交的权限，否则合并动作就会被拒绝。</p><p>启动 actions 的 repository - Settings -&gt; Action -&gt; General -&gt; Workflow permissions</p><p><a href="https://imgse.com/i/pPvpqqe"><img src="https://z1.ax1x.com/2023/10/08/pPvpqqe.jpg" alt="操作流程"></a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;github-workflow自动提交在合并主线时出现的问题&quot;&gt;&lt;a href=&quot;#github-workflow自动提交在合并主线时出现的问题&quot; class=&quot;headerlink&quot; title=&quot;github_workflow自动提交在合并主线时出现的问题&quot;&gt;</summary>
-      
-    
-    
-    
     
   </entry>
   
