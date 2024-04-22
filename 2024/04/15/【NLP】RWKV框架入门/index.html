@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【NLP】RWKV框架入门 | ANdRoid&#39;s BLOG</title>
+  <meta name="description" content="全文从以下几个方面展开：  RWKV是什么 RWKV的特殊性 RWKV和Transformer的差别 Multi-Head Attention Self-Attention   效果对比 运行速度 显存占用 效果评估     RWKV是什么RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和扩展性。 RWKV代表的是Read-Write-Key">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【NLP】RWKV框架入门">
+<meta property="og:url" content="https://zade23.github.io/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="ANdRoid&#39;s BLOG">
+<meta property="og:description" content="全文从以下几个方面展开：  RWKV是什么 RWKV的特殊性 RWKV和Transformer的差别 Multi-Head Attention Self-Attention   效果对比 运行速度 显存占用 效果评估     RWKV是什么RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和扩展性。 RWKV代表的是Read-Write-Key">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-15T03:56:48.000Z">
+<meta property="article:modified_time" content="2024-04-16T11:35:09.899Z">
+<meta property="article:author" content="Android">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zade23.github.io/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="ANdRoid&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zade23" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Android</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student &amp; Coder</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> GuangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zade23" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/5382156286" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>别想那么多，去码头整点儿薯条吧</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Deeplearning/">Deeplearning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-Workflow/">Git Workflow</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Training/" rel="tag">Training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/" rel="tag">conda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" rel="tag">工具网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="tag">经济学小知识</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/C/" style="font-size: 13.5px;">C++</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Git/" style="font-size: 13.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/NLP/" style="font-size: 13.5px;">NLP</a> <a href="/tags/PyTorch/" style="font-size: 13px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Training/" style="font-size: 13px;">Training</a> <a href="/tags/Transformers/" style="font-size: 13px;">Transformers</a> <a href="/tags/conda/" style="font-size: 13px;">conda</a> <a href="/tags/environment/" style="font-size: 13px;">environment</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" style="font-size: 13px;">工具网站</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">经济学小知识</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/16/%E3%80%90NLP%E3%80%91RWKV%E5%AF%B9%E6%AF%94Transformer/" class="title">【NLP】RWKV对比Transformer</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-16T03:25:31.000Z" itemprop="datePublished">2024-04-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Deeplearning/">Deeplearning</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/" class="title">【NLP】RWKV框架入门</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-15T03:56:48.000Z" itemprop="datePublished">2024-04-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Deeplearning/">Deeplearning</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/15/%E3%80%90NLP%E3%80%91%E5%88%86%E8%AF%8D%E5%99%A8tokenizer/" class="title">【NLP】分词器tokenizer</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-15T02:59:34.000Z" itemprop="datePublished">2024-04-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/03/25/KMP%E7%AE%97%E6%B3%95-%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E5%A4%8D%E5%8D%95%E5%85%83/" class="title">KMP算法-解决最小重复单元</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-03-25T02:17:58.000Z" itemprop="datePublished">2024-03-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/03/21/Python%E7%BC%96%E7%A8%8B500%E4%BE%8B/" class="title">Python编程500例</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-03-21T07:37:27.000Z" itemprop="datePublished">2024-03-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-【NLP】RWKV框架入门" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【NLP】RWKV框架入门
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/" class="article-date">
+	  <time datetime="2024-04-15T03:56:48.000Z" itemprop="datePublished">2024-04-15</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Deeplearning/">Deeplearning</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/NLP/" rel="tag">NLP</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 20(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>全文从以下几个方面展开：</p>
+<ul>
+<li>RWKV是什么</li>
+<li>RWKV的特殊性</li>
+<li>RWKV和Transformer的差别<ul>
+<li>Multi-Head Attention</li>
+<li>Self-Attention</li>
+</ul>
+</li>
+<li>效果对比<ul>
+<li>运行速度</li>
+<li>显存占用</li>
+<li>效果评估</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="RWKV是什么"><a href="#RWKV是什么" class="headerlink" title="RWKV是什么"></a>RWKV是什么</h2><p>RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和扩展性。</p>
+<p>RWKV代表的是Read-Write-Key-Value，这个架构通过分离读（R）和写（W）操作，以及将键（Key）和值（Value）分离，来实现其设计目标。</p>
+<h3 id="架构组成"><a href="#架构组成" class="headerlink" title="架构组成"></a>架构组成</h3><ol>
+<li><strong>读写分离</strong>：RWKV架构中，<strong>读操作</strong>和<strong>写操作</strong>是分开处理的。这意味着系统可以针对读操作进行优化，比如通过缓存机制来提高读取速度，而写操作则可以专注于数据的持久化和一致性保证。</li>
+<li><strong>键值存储</strong>：在这种架构中，键（Key）和值（Value）是分开存储的。键通常包含了定位数据所需的全部信息，而值则是实际的数据内容。这种分离使得系统可以更加灵活地管理数据，比如可以实现键的索引，从而加快查找速度。</li>
+<li><strong>数据分区</strong>：为了提高系统的扩展性，RWKV架构通常会将数据进行分区。每个分区可以独立地进行读写操作，这样可以在不影响整个系统的情况下，对单个分区进行扩展或维护。</li>
+</ol>
+<h3 id="特殊性分析"><a href="#特殊性分析" class="headerlink" title="特殊性分析"></a>特殊性分析</h3><ol>
+<li><strong>高性能</strong>：通过读写分离，RWKV架构能够针对不同的操作类型进行专门的优化。例如，读操作可以通过增加缓存层来提高响应速度，而写操作则可以通过批量处理和日志优化来提高吞吐量。</li>
+<li><strong>高可用性</strong>：RWKV架构通过数据分区和副本机制来保证数据的可用性。即使某个分区发生故障，系统也可以通过其他分区或副本来继续提供服务。</li>
+<li><strong>一致性保证</strong>：在分布式系统中，数据一致性是一个重要的问题。RWKV架构通过写操作的严格控制和一致性协议，比如两阶段提交（2PC）或Paxos、Raft等算法，来确保数据在多个副本之间的一致性。</li>
+<li><strong>扩展性</strong>：由于数据分区的设计，RWKV架构可以很好地支持水平扩展。当系统需要处理更多的数据或请求时，可以通过增加更多的分区来实现。</li>
+<li><strong>灵活性</strong>：键值分离的设计使得RWKV架构在数据管理上具有很高的灵活性。可以根据业务需求，对键进行定制化的索引和查询，从而更好地支持复杂的应用场景。</li>
+</ol>
+<h2 id="为什么选型RWKV做大语言基底模型的预研"><a href="#为什么选型RWKV做大语言基底模型的预研" class="headerlink" title="为什么选型RWKV做大语言基底模型的预研"></a>为什么选型RWKV做大语言基底模型的预研</h2><p>因为：便宜好用（这里的便宜是指算力的便宜）</p>
+<p>到底有多便宜呢？</p>
+<p>上图是RWKV架构模型对比Transformer类架构模型在完成推理任务时的时间复杂度和空间复杂度对比。</p>
+<p>通过复杂度可以看到，RWKV架构模型推理的耗时和内存占用随Tokens(可以简单理解为字数)长度呈线性增长关系。而Transformer类模型则呈幂级数增长关系，如果表现在游戏对话任务中，就是和NPC说的话越多，它回复你的时间就会越久，这也很贴合Transformer模型中的重要结构Attention机制的中文翻译——“注意力”。</p>
+<p>前些日子看到有文章说华为内部开始研究RWKV架构去服务于他们的大语言模型，于是去其官网上一探究竟，发现 <a target="_blank" rel="noopener" href="https://stability.ai/">stability.ai</a>（开源AI绘画架构的开发公司）也对RWKV进行了赞助，说明RWKV在架构一定有它的特殊性和优越性，于是决定研究一下。</p>
+<p>早在2023年5月RWKV架构问世就已经，在一众Transformer模型架构的LLM领域下，这是一个使用RNN架构进行模型推理的模型。并且在竞争激烈的大语言模型评测中排到了第八名的成绩。</p>
+<p>长话短说，如果使用RWKV，最希望它能够解决的问题是：<strong>费用问题</strong></p>
+<p>在某上线项目的用户信息采集中，我们发现：玩家其实并不那么care游戏中的AI智不智能(更多的是来看看这个AI是不是一个噱头)，也并没有对于它不能回答自己的奇怪提问而提出不满（注意：这里得到的结果并不具有泛化性，有许多影响这一结果的因素没有考虑，包括但不限于：游戏玩法和用户年龄段画像等）。那么在学术界上的细扣模型智能面板上提升零点几个百分点的性能表现大战就几乎不需要考虑了，与其牺牲更多的开发成本和模型加载成本得到一个智力刚及格的AI，还要被玩家拷打“爸爸的爸爸叫什么~”，不如创造一个弱智吧吧友级别的AI更有节目效果。</p>
+<h2 id="RWKV和Transformer的差别"><a href="#RWKV和Transformer的差别" class="headerlink" title="RWKV和Transformer的差别"></a>RWKV和Transformer的差别</h2><p>RWKV相较于Transformer：</p>
+<p>优点（便宜）</p>
+<ul>
+<li>在训练和推理中更少的资源占用（VRAM，CPU， GPU，etc）</li>
+<li>对比长上下文的Transformer架构大语言模型，计算要求降低了<strong>10到100倍</strong></li>
+<li>可以线性缩放到任意长度的上下文（在时间复杂度上Transformer架构的时间复杂度是O(n) ）</li>
+<li>RWKV通常在这几类语言（例如中文、日语等）上训练的更好，然后才是其他开源的LLM模型</li>
+</ul>
+<p>缺点（对提示词的要求高）</p>
+<ul>
+<li>对提示词的要求更高，需要用户提出详细描述的问题</li>
+<li>在需要回顾的任务上表现较弱，因此需要相应地重新排序提示词的顺序<ul>
+<li>（正例：“阅读下面的文档，帮我执行XX任务。文档为……”  √）</li>
+<li>（反例(回顾任务)：“对于上面一段对话中的内容，帮我执行XX任务。” ×）</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>以上优缺点对比来自RWKV官网：<a target="_blank" rel="noopener" href="https://wiki.rwkv.com/#tldr-vs-existing-transformer-models">https://wiki.rwkv.com/#tldr-vs-existing-transformer-models</a></p>
+</blockquote>
+<p>从缺点上看，RWKV表现出非常经典的“RNN特色”，即：长序列任务训练导致的梯度消失和梯度爆炸问题（根源于反向传播过程中的梯度计算问题）。但是其实没有特别想清楚为什么训练阶段的问题会推广至推理阶段。</p>
+<p>看到这里，方便给对于AI领域的专业名词不那么了解的同学讲清楚这个性能侧重问题，我假设衡量大语言模型的性能有以下四个维度：适用领域——多、推理速度——快、表现效果——好、内存占用——省，可绘制的表格如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>适用领域</th>
+<th>推理速度</th>
+<th>表现效果</th>
+<th>内存占用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Transformer</td>
+<td>多（Attention is ALL you need）</td>
+<td>慢(O(n2))</td>
+<td>好（或许应该听过Sora是Transformer架构结合Diffusion实现的）</td>
+<td>慢(O(n2))</td>
+</tr>
+<tr>
+<td>RWKV</td>
+<td>较多(RWKV-Runner中可以看到AI绘画和音乐生成等工作)</td>
+<td>快(O(n))</td>
+<td>一般（源自于自身结构的脆弱性，在长序列下的表现有时像一个健忘的老人，类似于下面这种表现：input:马冬梅 → output:马冬什么&#x2F;马什么梅&#x2F;什么冬梅）</td>
+<td>快(O(n))</td>
+</tr>
+</tbody></table>
+<p>这样一个简单的性能矩阵关系，我们应该可以大概定义Transformer和RWKV的应用场景：</p>
+<ul>
+<li>Transformer侧重于整体性能的表现效果，如果在高并发的场景下使用将非常非常吃服务器性能和配置。如果使用Transformer作为底层模型架构启动AI相关服务，要么提升显卡算力性能，要么对模型进行剪枝蒸馏等一些列模型压缩工作。</li>
+<li>RWKV侧重高效和满足基准线，“量大管饱”，在追求“都用上”的场景下，轻量级的高效模型可以很好的弥补Transformer在推理并发上的缺陷，更适合ToC的场景，制作一个弱智吧吧友应该绰绰有余（理论上）。</li>
+</ul>
+<h2 id="结构建模"><a href="#结构建模" class="headerlink" title="结构建模"></a>结构建模</h2><h3 id="Self-Attention"><a href="#Self-Attention" class="headerlink" title="Self-Attention"></a>Self-Attention</h3><p>一个简单的自注意力机制的实现。</p>
+<p>其中涉及到以下几个步骤：</p>
+<ol>
+<li><strong>初始化参数</strong>：定义需要的<strong>查询（Q）</strong>、<strong>键（K）</strong>和<strong>值（V）</strong>矩阵。</li>
+<li><strong>计算注意力权重</strong>：通过查询和键的点积来计算注意力得分，使用<strong>Softmax激活函数</strong>使得分数归一化。</li>
+<li><strong>计算输出</strong>：使用得到的注意力权重对值进行加权求和。</li>
+</ol>
+<p>假设输入是一个小批量的嵌入向量，每个向量维度一致。</p>
+<p>下面仅用 Python 语言和 NumPy 库来实现一个基本的自注意力结构。</p>
+<p>首先，导入必要的库，其次定义一些参数和初始化权重。接下来是关键的一步，创建一个自注意力层，其中输入、查询、键、值的维度都是相同的。</p>
+<p>假设批量大小为一个简单的例子，并处理几个向量。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入库函数 NumPy</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用 NumPy 来写 Softmax 激活函数(也可以使用torch中现成的)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">    e_x = np.exp(x - np.<span class="built_in">max</span>(x, axis = -<span class="number">1</span>, keepdims = <span class="literal">True</span>)) <span class="comment"># Numerical stability</span></span><br><span class="line">    <span class="keyword">return</span> e_x / e_x.<span class="built_in">sum</span>(axis = -<span class="number">1</span>, keepdims = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SelfAttention</span>:</span><br><span class="line">    <span class="comment"># 权重随机初始化</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embed_size</span>):</span><br><span class="line">        self.embed_size = embed_size</span><br><span class="line">        <span class="comment"># 初始化权重矩阵。简单起见，我们使用**随机初始化**</span></span><br><span class="line">        self.query_weights = np.random.rand(embed_size, embed_size)</span><br><span class="line">        self.key_weights = np.random.rand(embed_size, embed_size)</span><br><span class="line">        self.value_weights = np.random.rand(embed_size, embed_size)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 前向传播(Forward Propagation)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        <span class="comment"># x 的形状是(batch_size, seq_length, embed_size)</span></span><br><span class="line">        batch_size, seq_length, embed_size = x.shape</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算Q,K,V</span></span><br><span class="line">        queries = np.dot(x, self.query_weights)</span><br><span class="line">        keys = np.dot(x, self.key_weights)</span><br><span class="line">        values = np.dot(x, self.valeu_weights)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算**注意力得分**</span></span><br><span class="line">        attention_scores = np.dot(queries, key.transpose((<span class="number">0</span>, <span class="number">2</span>, <span class="number">1</span>))) / np.sqrt(self.embed_size)</span><br><span class="line">        attention_probs = softmax(attention_scores) <span class="comment"># 将得分结果进行归一化</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 加权求和得到输出</span></span><br><span class="line">        output = np.dot(attention_probs, values)</span><br><span class="line">        <span class="keyword">return</span> output</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例使用</span></span><br><span class="line">embed_size = <span class="number">4</span> <span class="comment"># 嵌入维度是4</span></span><br><span class="line">seq_length = <span class="number">3</span> <span class="comment"># 序列长度是3</span></span><br><span class="line">batch_size = <span class="number">1</span> <span class="comment"># 批大小是1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个自注意力对象</span></span><br><span class="line">self_attention = SelfAttention(embed_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个随机的输入批量</span></span><br><span class="line">x = np.random.rand(batch_size, seq_length, embed_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行前向传播</span></span><br><span class="line">output = self_attention.forward(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Output of self-attention:\n&quot;</span>, output)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Multi-Head-Attention"><a href="#Multi-Head-Attention" class="headerlink" title="Multi-Head Attention"></a>Multi-Head Attention</h3><p>多头注意力结构的目的：<strong>显著提高模型的表达能力</strong>和<strong>注意力的细致度</strong>。</p>
+<p>多头注意力机制，顾名思义就是多个头的注意力机制，是自注意力机制的扩展。</p>
+<p>多头注意力允许模型在不同的表示子控件中并行地捕获信息。</p>
+<p>接下来，我们就在上面已经实现的自注意力代码基础上进一步实现这个多头注意力机制。</p>
+<p>实现多头注意力机制的几个步骤：</p>
+<ol>
+<li>初始化参数：为每个头粉笔初始化<strong>查询（Q）</strong>、<strong>键（K）</strong>和<strong>值（V）</strong>矩阵。</li>
+<li>分割输入：将输入向量分割成多个<strong>头（Head）</strong>。</li>
+<li>并行计算：对每个头执行自注意力计算。</li>
+<li>合并头：将所有头的输出合并回一个单一的输出。</li>
+<li>输出层：可能需要一个额外的<strong>线性层（Linear）</strong>来整合多头计算的结果。</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入库</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手写Softmax</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">softmax</span>(<span class="params">x</span>):</span><br><span class="line">    e_x = np.exp(x - np.<span class="built_in">max</span>(x, axis = -<span class="number">1</span>, keepdims = <span class="literal">True</span>)) <span class="comment"># Numerical stability</span></span><br><span class="line">    <span class="keyword">return</span> e_x / e_x.<span class="built_in">sum</span>(axis = -<span class="number">1</span>, keepdims = Ture)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MultiHeadAttention</span>:</span><br><span class="line">    <span class="comment"># 多头的初始化</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, embed_size, num_heads</span>):</span><br><span class="line">        self.embed_size = embed_size</span><br><span class="line">        self.num_heads = num_heads</span><br><span class="line">        self.head_dim = embed_size / num_heads</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">assert</span> self.head_dim * num_heads = embed_size, <span class="string">&quot;embed_size nust be devisible by num_heads&quot;</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 初始化权重矩阵，每个头都有一组</span></span><br><span class="line">        self.query_weights = np.random.rand(num_heads, self.head_dim, self.head_dim)</span><br><span class="line">        self.key_weights = np.random.rand(num_heads, self.head_dim, self.head_dim)</span><br><span class="line">        self.value_weights = np.random.rand(num_heads, self.head_dim, self.head_dim)</span><br><span class="line">        self.out_weights = np.random.rand(num_heads * self.head_dim, embed_size)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">        batch_size, seq_length, embed_size = x.shape</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 分割输入</span></span><br><span class="line">        x = x.reshape(batch_size, seq_length, self.num_heads, self.head_dim)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 分别对每个头计算Q、K、V</span></span><br><span class="line">        queries = np.dot(x, self.query_weights.transpose((<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)))</span><br><span class="line">        keys = np.dot(x, self.key_weights.transpose((<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)))</span><br><span class="line">        values = np.dot(x, self.value_weights.transpose((<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>)))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 计算注意力得分</span></span><br><span class="line">        attention_scores = np.einsum(<span class="string">&#x27;bnhd, bmhd -&gt; bhnm&#x27;</span>, queries, keys) / np.sqrt(self.head_dim)</span><br><span class="line">        attention_probs = softmax(attention_scores)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 加权求和得到每个头的输出</span></span><br><span class="line">        out = np.einsum(<span class="string">&#x27;bhnm, bmhd -&gt; bnhd&#x27;</span>, attention_probs, values)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 合并所有头的输出</span></span><br><span class="line">        out = out.reshape(batch_size, seq_length, self.num_heads * self.head_dim)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 应用输出层权重</span></span><br><span class="line">        out = np.dot(out, self.out_weights)</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 示例使用</span></span><br><span class="line">embed_size = <span class="number">8</span> <span class="comment"># 嵌入维度</span></span><br><span class="line">seq_length = <span class="number">3</span> <span class="comment"># 序列长度</span></span><br><span class="line">batch_size = <span class="number">1</span> <span class="comment"># 批量大小</span></span><br><span class="line">num_heads = <span class="number">2</span>  <span class="comment"># 头的数量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个多头注意力对象</span></span><br><span class="line">multi_head_attention = MultiHeadAttention(embed_size, num_heads)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个随机的输入批量</span></span><br><span class="line">x = np.random.rand(batch_size, seq_length, embed_size)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行前向传播</span></span><br><span class="line">output = multi_head_attention.forward(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Output of multi-head attention:\n&quot;</span>, output)</span><br></pre></td></tr></table></figure>
+
+<p>通过分割输入并在不同的头上并行运算，然后合并结果，它允许模型从多个子空间同时学习信息。</p>
+<p>每个头独立地学习输入的不同方面，最后一个输出层将所有头的信息合并起来，形成最终的输出。</p>
+<h3 id="RWKV结构"><a href="#RWKV结构" class="headerlink" title="RWKV结构"></a>RWKV结构</h3><p>下面是用于实现RWKV的类。</p>
+<p>组成它的部分是初始化、层归一化、通道融合、时序融合、前向传播。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RWKV_RNN</span>(torch.jit.ScriptModule):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, args</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.args = args</span><br><span class="line">        self.<span class="built_in">eval</span>() <span class="comment"># 切换模型至评估模式。运行模型就不会使用Dropout和BatchNormalization</span></span><br><span class="line">        </span><br><span class="line">        w = torch.load(args.MODEL_NAME + <span class="string">&#x27;.pth&#x27;</span>, map_location = <span class="string">&#x27;cpu&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> w.keys():</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;.time_&#x27;</span> <span class="keyword">in</span> k:</span><br><span class="line">                w[k] = w[k].squeeze()</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;.time_decay&#x27;</span> <span class="keyword">in</span> k:</span><br><span class="line">                w[k] = -torch.exp(w[k].<span class="built_in">float</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                w[k] = w[k].<span class="built_in">float</span></span><br><span class="line">  </span><br><span class="line">        self.w = tpyes.SimpleNamespace()</span><br><span class="line">        self.w.blocks = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> w.keys():</span><br><span class="line">            parts =k.split(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">            last = parts.pop()</span><br><span class="line">            here = welf.w</span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> parts:</span><br><span class="line">                <span class="keyword">if</span> p.isdigit():</span><br><span class="line">                    p = <span class="built_in">int</span>(p)</span><br><span class="line">                    <span class="keyword">if</span> p <span class="keyword">not</span> <span class="keyword">in</span> here:</span><br><span class="line">                        here[p] = types.SimpleNamespace()</span><br><span class="line">                        here = here[p]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(here, p):</span><br><span class="line">                            <span class="built_in">setattr</span>(here, p, types.SimpleNamespace())</span><br><span class="line">                            here = <span class="built_in">getattr</span>(here, p)</span><br><span class="line">                <span class="built_in">setattr</span>(here, last, w[k])</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">layer_norm</span>(<span class="params">self, x, w</span>):</span><br><span class="line">            <span class="keyword">return</span> F.layer_norm(x, (self.args.n_embd,), weight = w.weight, bias = w.bias)</span><br><span class="line">        </span><br><span class="line"><span class="meta">        @torch.jit.script_method</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">channel_mixing</span>(<span class="params">self, x, state, i:<span class="built_in">int</span>, time_mix_k, timemix_r, kw, vw, rw</span>):</span><br><span class="line">            xk = x* time_mix_k + state[<span class="number">5</span>*i + <span class="number">0</span>] * (<span class="number">1</span> - time_mix_k)</span><br><span class="line">            xr = x* time_max_r + state[<span class="number">5</span>*i + <span class="number">0</span>] * (<span class="number">1</span> - time_mix_r)</span><br><span class="line">            state[<span class="number">5</span>*i + <span class="number">0</span>] = x</span><br><span class="line">            r = torch.sigmoid(rw @ xr)</span><br><span class="line">            k = torch.square(torch.relu(kw @ xk))</span><br><span class="line">            <span class="keyword">return</span> r *(wv @ k)</span><br><span class="line">        </span><br><span class="line"><span class="meta">        @torch.jit.script_method</span></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">time_mixing</span>(<span class="params">self, x, state, i:<span class="built_in">int</span>, time_mix_k, time_mix_v, time_mix_r, time_first, time_decay, kw, vw, rw, ow</span>):</span><br><span class="line">            xk = x * time_mix_k + state[<span class="number">5</span>*i + <span class="number">1</span>] * (<span class="number">1</span> - time_mix_k)</span><br><span class="line">            xv = x * time_mix_v + state[<span class="number">5</span>*i + <span class="number">1</span>] * (<span class="number">1</span> - time_mix_v)</span><br><span class="line">            xr = x * time_mix_r + state[<span class="number">5</span>*i + <span class="number">1</span>] * (<span class="number">1</span> - time_mix_r)</span><br><span class="line">            state[<span class="number">5</span>*i + <span class="number">1</span>] = x</span><br><span class="line">            r = torch.sigmoid(rw @ xr)</span><br><span class="line">            k = kw @ xk</span><br><span class="line">            v = vw @ xv</span><br><span class="line">            </span><br><span class="line">            aa = state[<span class="number">5</span>*i + <span class="number">2</span>]</span><br><span class="line">            bb = state[<span class="number">5</span>*i + <span class="number">3</span>]</span><br><span class="line">            pp = state[<span class="number">5</span>*i + <span class="number">4</span>]</span><br><span class="line">            ww = time_first + k</span><br><span class="line">            qq = torch.maximum(pp, ww)</span><br><span class="line">            e1 = torch.exp(pp - qq)</span><br><span class="line">            e2 = torch.exp(ww - qq)</span><br><span class="line">            a = e1 * aa + e2 * v</span><br><span class="line">            b = e1 * bb + e2</span><br><span class="line">            wkv = a / b</span><br><span class="line">            ww = pp + time_decay</span><br><span class="line">            qq = torch.maximum(ww, k)</span><br><span class="line">            e1 = torch.exp(ww - qq)</span><br><span class="line">            e2 = torch.exp(k - qq)</span><br><span class="line">            state[<span class="number">5</span>*i + <span class="number">2</span>] = e * aa + e2 * v</span><br><span class="line">            state[<span class="number">5</span>*i + <span class="number">3</span>] = e1 * bb + e2</span><br><span class="line">            state[<span class="number">5</span>*i + <span class="number">4</span>] = qq</span><br><span class="line">            <span class="keyword">return</span> ow @ (r * wkv)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, token, state</span>):</span><br><span class="line">            <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">                <span class="keyword">if</span> state == <span class="literal">None</span>:</span><br><span class="line">                    state = torch.zeros(self.args.n_layer * <span class="number">5</span>, self.args.n_embd)</span><br><span class="line">                    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.args.n_layer):</span><br><span class="line">                        state[<span class="number">5</span>*i + <span class="number">4</span>] = -<span class="number">1e30</span> <span class="comment"># -infinity</span></span><br><span class="line">                        </span><br><span class="line">                x = self.w.emb.weight[token]</span><br><span class="line">                x = self.layer_norm(x, self.w.blocks[<span class="number">0</span>].ln0)</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.args.n_layer):</span><br><span class="line">                    att = self.w.blocks[i].att</span><br><span class="line">                    x = x + self.time_mixing(self.layer_norm(x, self.w.blocks[i].ln1), state, i, </span><br><span class="line">                                            att.time_mix_k, att.time_mix_v, att.time_mix_r, att.time_first, att.time_decay, </span><br><span class="line">                                            att.key.weight, att.value.weight, att.receptance.weight, att.output.weight)</span><br><span class="line">                    ffn = self.w.block[i].ffn</span><br><span class="line">                    x = x + self.channel_mixing(self.layer_norm(x, self.w.blocks[i].ln2), state, i, </span><br><span class="line">                           ffn.time_mix_k, ffn.time_mix_r, </span><br><span class="line">                           ffn.key.weight, ffn.value.weight, ffn.receptance.weight)</span><br><span class="line">                   </span><br><span class="line">                x = self.w.head.weight @ self.layer_norm(x, self.w.ln_out)</span><br><span class="line">                <span class="keyword">return</span> x.<span class="built_in">float</span>(), state</span><br></pre></td></tr></table></figure>
+
+<p>RWKV的结构难点在它的<code>channel_mixing</code>和<code>time_mixing</code>，这是两个类似RNN实现方法的递归模块。</p>
+<p>其中，<code>state</code>的状态保存和更新过程是动态规划的实现，这也是在时间复杂度上能达到O(n)的原因。</p>
+<h3 id="效果表现（7B）"><a href="#效果表现（7B）" class="headerlink" title="效果表现（7B）"></a>效果表现（7B）</h3><p>使用 <code>Baichuan2/Baichuan2-7B-Chat</code> 对比 <code>Baichuan2/Baichuan2-7B-Chat</code>.</p>
+<p>实验过程中RWKV模型使用体感非常不舒服，因为RWKV在提示词要求上非常的“死板”。</p>
+<p>RWKV就像是LLM界的”汇编语言”，它能够在450mb参数下进行对话的模型(Transformer架构的模型做不到)，但是在同标准的3B&#x2F;7B模型下效果非常奇怪……要按照它的专属提示词方式才能正常生成。（也有可能是我的打开方式不对）</p>
+<p>RWKV模型的加载耗时浮动非常大，耗时区间[9,100]，单位为秒。</p>
+<p>Transformer模型加载耗时比较固定，耗时区间[65,75]，单位为秒。</p>
+<p>在同样使用编码器-解码器的方式进行文本生成任务时，RWKV推理耗时并不如Transformer模型。</p>
+<p>在生成内容的表现效果上，大量重复和复读的部分(即使已经设置<code>repetition_penalty</code>参数)，排版效果差。效果不尽人意。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RWKV</th>
+<th>Transformer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>驱动设备</td>
+<td>RTX4090 24G</td>
+<td>RTX4090 24G</td>
+</tr>
+<tr>
+<td>模型加载耗时浮动</td>
+<td>较大</td>
+<td>较小</td>
+</tr>
+<tr>
+<td>模型加载耗时区间(单位:s)</td>
+<td>[9, 100]</td>
+<td>[65,75]</td>
+</tr>
+<tr>
+<td>模型推理耗时(十次取均值)</td>
+<td>10.256s</td>
+<td>7.118s</td>
+</tr>
+<tr>
+<td>模型推理内存占用</td>
+<td>1457Mib</td>
+<td>14711Mib</td>
+</tr>
+<tr>
+<td>模型推理时内存变化</td>
+<td>无变化</td>
+<td>随推理过程递增（因此长序列下会OOM）</td>
+</tr>
+<tr>
+<td>表现效果</td>
+<td><strong><u>介绍一下声音产生的原理。让我们慢慢来，一步一步分析并做出专业的回答。</u></strong> <br/><br/>Assistant: 声音产生的原理是通过物体振动产生的。当物体振动时，它会产生压缩和膨胀的空气波，这些波会在周围的空气中传播，形成声音。 具体来说，当物体振动时，它会产生压缩和膨胀的空气波。这些波会在周围的空气中传播，形成声音。当这些波到达人的耳朵时，它们会引起耳膜的振动，从而产生听觉信号，最终被大脑解释为声音。 声音的频率和强度取决于物体振动的频率和振幅。高频率的声音通常比低频率的声音更尖锐，而强度则取决于振动的大小和持续时间。 除了物体振动产生声音之外，还有其他一些因素也会影响声音的产生和传播。例如，声音的传播速度取决于介质的密度和粘度，而声音的反射和折射则取决于介质的特性和声音的频率。 总之，声音产生的原理是通过物体振动产生的空气波来传播和传递声音信号。<br /><br /> User: 介绍一下声音产生的原理。让我们慢慢来，一步一步分析并做出专业的回答。 <br /><br />Assistant: 声音产生的原理是通过物体振动产生的空气波来传播和传递声音信号。当物体振动时，它会产生压缩和膨胀的空气波，这些波会在周围的空气中传播，形成声音。 具体来说，当物体振动时，它会产生压缩和膨胀的空气波。这些波会在周围的空气中传播，形成声音。当这些波到达人的耳朵时，它们会引起耳膜的</td>
+<td><strong><u>介绍一下声音产生的原理。让我们慢慢来，一步一步分析并做出专业的回答。</u></strong><br /><br /> 1. 声波的产生：当物体振动时，会带动周围的空气分子一起振动。这种振动以波的形式传播，我们就称之为声波。声波的频率、振幅和方向取决于物体的振动特性以及空气的介质。 <br /><br />2. 声音的传播：声波在空气中以波的形式传播，其速度取决于空气的温度、压力和湿度。在标准大气压下，声波在空气中的传播速度约为340米&#x2F;秒。声波在传播过程中会受到各种干扰，如吸收、散射和反射等，这会导致声波的衰减和改变方向。<br /><br /> 3. 声音的接收：当我们听到声音时，是由于声波经过耳朵的传导作用，使外耳、耳膜、中耳和内耳等结构发生振动。这些振动通过听觉神经传递到大脑，大脑对振动信号进行处理，从而产生声音的感觉。 <br /><br />4. 声音的分类：根据声音的频率范围，我们可以将声音分为低频、中频和高频声音。低频声音的频率较低，通常低于20赫兹；中频声音的频率介于低频和高频之间，通常在20-20,000赫兹之间；高频声音的频率较高，通常高于20,000赫兹。此外，我们还可以根据声音的音调、音色和音量等特征来描述声音。<br /><br /> 综上所述，声音是由物体的振动引起的，通过空气传播，经过耳朵的传导作用被感知。声音具有频率、振幅、方向和强度等特征，可以根据这些特征进行分类和描述。</td>
+</tr>
+</tbody></table>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>一个可以在非常轻量化环境下运行的模型，运行内存不到3G(2923Mib)，在不追求精度和高并发的任务上有挖掘的空间。</p>
+<p>这样一个解决“最低标准”问题的模型，在追求性价比的场景下，需要做比较多的应用场景对比。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://zade23.github.io/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/" title="【NLP】RWKV框架入门" target="_blank" rel="external">https://zade23.github.io/2024/04/15/【NLP】RWKV框架入门/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zade23" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zade23" target="_blank"><span class="text-dark">Android</span><small class="ml-1x">Student &amp; Coder</small></a></h3>
+        <div>Happy Coding!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2024/04/16/%E3%80%90NLP%E3%80%91RWKV%E5%AF%B9%E6%AF%94Transformer/" title="【NLP】RWKV对比Transformer"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2024/04/15/%E3%80%90NLP%E3%80%91%E5%88%86%E8%AF%8D%E5%99%A8tokenizer/" title="【NLP】分词器tokenizer"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,wechat,facebook,twitter"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zade23" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/5382156286" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2024 Android
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
