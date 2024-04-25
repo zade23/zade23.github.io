@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>【Git】一个流畅的开源贡献流程 | ANdRoid&#39;s BLOG</title>
+  <meta name="description" content="由本人的有道云笔记搬运到个人网站，创作日期：2023年3月20日   教练……我想开源 github开源仓库工作流 如果我们想进行开源贡献 Paddle项目 文档贡献指南 第一步：Fork仓库并Clone到本地加载 第二步：Fork仓库并Clone到本地加载 第三步：下载pre-commit工具（下载过就不用再下了） 第四步：单次修改并提交都要运行pre-commit进行单元测试 提交：comm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Git】一个流畅的开源贡献流程">
+<meta property="og:url" content="https://zade23.github.io/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="ANdRoid&#39;s BLOG">
+<meta property="og:description" content="由本人的有道云笔记搬运到个人网站，创作日期：2023年3月20日   教练……我想开源 github开源仓库工作流 如果我们想进行开源贡献 Paddle项目 文档贡献指南 第一步：Fork仓库并Clone到本地加载 第二步：Fork仓库并Clone到本地加载 第三步：下载pre-commit工具（下载过就不用再下了） 第四步：单次修改并提交都要运行pre-commit进行单元测试 提交：comm">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027390144.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027493043.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027499063.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251451164.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251451889.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251452892.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251453294.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251453976.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251454853.jpg">
+<meta property="article:published_time" content="2024-04-25T04:03:15.000Z">
+<meta property="article:modified_time" content="2024-04-25T07:00:11.947Z">
+<meta property="article:author" content="Android">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027390144.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zade23.github.io/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="ANdRoid&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/zade23" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Android</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Student &amp; Coder</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> GuangZhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav menu-highlight">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zade23" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/5382156286" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>别想那么多，去码头整点儿薯条吧</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Deeplearning/">Deeplearning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-Workflow/">Git Workflow</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Engine/" rel="tag">Game Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Training/" rel="tag">Training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/" rel="tag">conda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" rel="tag">工具网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="tag">经济学小知识</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Game-Engine/" style="font-size: 13px;">Game Engine</a> <a href="/tags/Git/" style="font-size: 13.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/PyTorch/" style="font-size: 13px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Training/" style="font-size: 13px;">Training</a> <a href="/tags/Transformers/" style="font-size: 13px;">Transformers</a> <a href="/tags/conda/" style="font-size: 13px;">conda</a> <a href="/tags/environment/" style="font-size: 13px;">environment</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" style="font-size: 13px;">工具网站</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">经济学小知识</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Git-Workflow/">Git Workflow</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/" class="title">【Git】一个流畅的开源贡献流程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-25T04:03:15.000Z" itemprop="datePublished">2024-04-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Unity/">Unity</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/22/%E3%80%90Unity%E3%80%91%E7%A0%B4%E8%A7%A3%E7%89%88%E5%AE%89%E8%A3%85%E6%8C%87%E5%8C%97/" class="title">【Unity】破解版安装指北</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-22T13:27:41.000Z" itemprop="datePublished">2024-04-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/16/%E3%80%90NLP%E3%80%91RWKV%E5%AF%B9%E6%AF%94Transformer/" class="title">【NLP】RWKV对比Transformer</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-16T03:25:31.000Z" itemprop="datePublished">2024-04-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Deeplearning/">Deeplearning</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/" class="title">【NLP】RWKV框架入门</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-15T03:56:48.000Z" itemprop="datePublished">2024-04-15</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Deeplearning/">Deeplearning</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/15/%E3%80%90NLP%E3%80%91%E5%88%86%E8%AF%8D%E5%99%A8tokenizer/" class="title">【NLP】分词器tokenizer</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-15T02:59:34.000Z" itemprop="datePublished">2024-04-15</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-【Git】一个流畅的开源贡献流程" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【Git】一个流畅的开源贡献流程
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/" class="article-date">
+	  <time datetime="2024-04-25T04:03:15.000Z" itemprop="datePublished">2024-04-25</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Git-Workflow/">Git Workflow</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Git/" rel="tag">Git</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <blockquote>
+<p>由本人的有道云笔记搬运到个人网站，创作日期：2023年3月20日</p>
+</blockquote>
+<ul>
+<li><a href="#%E6%95%99%E7%BB%83%E6%88%91%E6%83%B3%E5%BC%80%E6%BA%90">教练……我想开源</a></li>
+<li><a href="#github%E5%BC%80%E6%BA%90%E4%BB%93%E5%BA%93%E5%B7%A5%E4%BD%9C%E6%B5%81">github开源仓库工作流</a></li>
+<li><a href="#%E5%A6%82%E6%9E%9C%E6%88%91%E4%BB%AC%E6%83%B3%E8%BF%9B%E8%A1%8C%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE">如果我们想进行开源贡献</a></li>
+<li><a href="#paddle%E9%A1%B9%E7%9B%AE">Paddle项目</a><ul>
+<li><a href="#%E6%96%87%E6%A1%A3%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97">文档贡献指南</a><ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AD%A5fork%E4%BB%93%E5%BA%93%E5%B9%B6clone%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%8A%A0%E8%BD%BD">第一步：Fork仓库并Clone到本地加载</a></li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5fork%E4%BB%93%E5%BA%93%E5%B9%B6clone%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%8A%A0%E8%BD%BD">第二步：Fork仓库并Clone到本地加载</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E4%B8%8B%E8%BD%BDpre-commit%E5%B7%A5%E5%85%B7%E4%B8%8B%E8%BD%BD%E8%BF%87%E5%B0%B1%E4%B8%8D%E7%94%A8%E5%86%8D%E4%B8%8B%E4%BA%86">第三步：下载pre-commit工具（下载过就不用再下了）</a></li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E5%8D%95%E6%AC%A1%E4%BF%AE%E6%94%B9%E5%B9%B6%E6%8F%90%E4%BA%A4%E9%83%BD%E8%A6%81%E8%BF%90%E8%A1%8Cpre-commit%E8%BF%9B%E8%A1%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95">第四步：单次修改并提交都要运行pre-commit进行单元测试</a><ul>
+<li><a href="#%E6%8F%90%E4%BA%A4commit">提交：commit</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E4%BA%94%E6%AD%A5push">第五步：push</a></li>
+<li><a href="#%E7%AC%AC%E5%85%AD%E6%AD%A5review--merge">第六步：review &amp; merge</a></li>
+<li><a href="#%E5%B0%8F%E6%8F%92%E6%9B%B2checkprtemplate-%E4%B8%80%E5%AE%9A%E8%A6%81%E8%A7%84%E8%8C%83">小插曲：CheckPRTemplate 一定要规范</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#gradio%E9%A1%B9%E7%9B%AE">Gradio项目</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5">参考链接</a></li>
+</ul>
+<h2 id="教练……我想开源"><a href="#教练……我想开源" class="headerlink" title="教练……我想开源"></a>教练……我想开源</h2><p>一直想参加一个开源项目，丰富自己GitHub账号头衔的同时还能学到一些知识。目前定位到了两个自己非常感兴趣的项目</p>
+<ol>
+<li>（国内项目）Paddle：百度飞桨深度学习框架</li>
+<li>（国际项目）Gradio：用Python构建机器学习网页APP<br>在项目主页的 Issues 提出自己的问题</li>
+</ol>
+<h2 id="github开源仓库工作流"><a href="#github开源仓库工作流" class="headerlink" title="github开源仓库工作流"></a>github开源仓库工作流</h2><blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://nvie.com/posts/a-successful-git-branching-model/">《A successful Git branching model》</a><br>Remote（main&#x2F;）：所有人都共享的代码仓库</p>
+</blockquote>
+<h2 id="如果我们想进行开源贡献"><a href="#如果我们想进行开源贡献" class="headerlink" title="如果我们想进行开源贡献"></a>如果我们想进行开源贡献</h2><ul>
+<li>第一步就是建立一个“feature branch”。目前在Local上，main branch 和 feature branch 上面的内容都是一致的。当使用checkout命令后，硬盘会同步git指定branch下所有的源文件（切换就会改变硬盘当下空间内部的文件）<br>如何正确提Issues<br> 在提Issues之前，一定要提前用关键字搜索看一下你想提出的问题是否已经存在。确定不存在后再进行提问</li>
+</ul>
+<h2 id="Paddle项目"><a href="#Paddle项目" class="headerlink" title="Paddle项目"></a>Paddle项目</h2><h3 id="文档贡献指南"><a href="#文档贡献指南" class="headerlink" title="文档贡献指南"></a>文档贡献指南</h3><p>以最近的一次合并提交为例：本次提交是添加了Tensor文件夹下的十个说明文档。</p>
+<h4 id="第一步：Fork仓库并Clone到本地加载"><a href="#第一步：Fork仓库并Clone到本地加载" class="headerlink" title="第一步：Fork仓库并Clone到本地加载"></a>第一步：Fork仓库并Clone到本地加载</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/&lt;USERNAME&gt;/docs</span><br><span class="line"><span class="built_in">cd</span> docs</span><br></pre></td></tr></table></figure>
+
+<h4 id="第二步：Fork仓库并Clone到本地加载"><a href="#第二步：Fork仓库并Clone到本地加载" class="headerlink" title="第二步：Fork仓库并Clone到本地加载"></a>第二步：Fork仓库并Clone到本地加载</h4><p>docs 目前使用 Git 流分支模型进行开发，测试，发行和维护。<br>所有的 feature 和 bug fix 的开发工作都应该在一个新的分支上完成，一般从 develop 分支上创建新分支。<br>使用 <code>git checkout -b</code> 创建并切换到新分支。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status  <span class="comment">#查看一下当前分支目录是否clean</span></span><br><span class="line">git checkout -b &lt;创建并切换到的分支名称&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第三步：下载pre-commit工具（下载过就不用再下了）"><a href="#第三步：下载pre-commit工具（下载过就不用再下了）" class="headerlink" title="第三步：下载pre-commit工具（下载过就不用再下了）"></a>第三步：下载pre-commit工具（下载过就不用再下了）</h4><p>一种检查模板格式是否匹配项目格式的预提交工具。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install pre-commit</span><br><span class="line">pre-commit install</span><br></pre></td></tr></table></figure>
+
+<h4 id="第四步：单次修改并提交都要运行pre-commit进行单元测试"><a href="#第四步：单次修改并提交都要运行pre-commit进行单元测试" class="headerlink" title="第四步：单次修改并提交都要运行pre-commit进行单元测试"></a>第四步：单次修改并提交都要运行pre-commit进行单元测试</h4><ol>
+<li>通过指令 git status 进行状态的检查</li>
+<li>通过 git add 将内容添加进准备提交的区域</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027390144.jpg"></p>
+<blockquote>
+<p>上面的状态空间中显示我 9 次修改中有 1 次进入了“暂存区”，此时就要使用pre-commit指令进行单元测试</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027493043.jpg"></p>
+<blockquote>
+<p>上面在运行了pre-commit之后，除了红色以外区域显示是通过的部分。红色部分说明没有通过单元测试，这个报错说明Linux系统和Win系统的换行符不统一导致的格式问题，一般这种情况下pre-commit会自己进行修复，所以重新提交就可以解决</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/1714027499063.jpg"></p>
+<blockquote>
+<p>上面在进行了一次性的提交之后，pre-commit一次性将所有的文件进行了检查和修改，之后再进行一次 git add –update 就可以将更新修改后的文件合并至文件的缓存区内。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251451164.jpg"></p>
+<blockquote>
+<p>解决步骤如上</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251451889.jpg"></p>
+<blockquote>
+<p>在进行一次提交之后就可以看到所有单元测试已经通过了</p>
+</blockquote>
+<p>在单元测试全部通过之后，可以正式填写提交说明了：</p>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251452892.jpg"></p>
+<blockquote>
+<p>上面我提出的说明是“修改文档”。显示有 9 个文件被修改了， 20 行新增代码， 22 行删减代码。</p>
+</blockquote>
+<h5 id="提交：commit"><a href="#提交：commit" class="headerlink" title="提交：commit"></a>提交：commit</h5><p><strong>之所以要运行 <code>pre-commit</code>  就是要为后面要执行的commit操作避免提前的冲突和麻烦</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">&quot;fix/add xxxx&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="第五步：push"><a href="#第五步：push" class="headerlink" title="第五步：push"></a>第五步：push</h4><p>先确保已经同步过原始仓库的最新代码 <a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/docs">https://github.com/PaddlePaddle/docs</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">➜  git remote</span><br><span class="line">origin</span><br><span class="line">➜  git remote -v</span><br><span class="line">origin  https://github.com/USERNAME/docs (fetch)</span><br><span class="line">origin  https://github.com/USERNAME/docs (push)</span><br><span class="line"></span><br><span class="line"><span class="comment"># origin 是 clone 的远程仓库的名字，也就是自己用户名下的 Paddle，接下来创建一个原始 Paddle 的仓库远程主机，命名为 upstream</span></span><br><span class="line">➜  git remote add upstream https://github.com/PaddlePaddle/docs</span><br><span class="line">➜  git remote</span><br><span class="line">&gt;&gt;  origin</span><br><span class="line">&gt;&gt;  upstream</span><br><span class="line">-----------------------------------之前提交过了就可以跳到这一步---------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取 upstream 的最新代码并更新当前分支</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 upstream 远程仓库获取最新的代码和提交历史，将本地仓库与远程仓库保持同步。</span></span><br><span class="line">➜  git fetch upstream  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 upstream 远程仓库 develop 分支中获取最新的代码和提交历史，并将其自动合并到当前本地分支。</span></span><br><span class="line">➜  git pull upstream develop </span><br><span class="line"></span><br><span class="line"><span class="comment"># Push 到远程仓库：也就是将本地修改推送到 GitHub 即： https://github.com/USERNAME/docs</span></span><br><span class="line"><span class="comment"># 将本地分支的提交推送到名为origin的远程仓库中的特定分支（&lt;my-pr&gt;）。</span></span><br><span class="line"><span class="comment"># 通过执行此命令，您可以将本地分支的修改上传到远程仓库，使得其他协作者可以查看和访问您的提交。</span></span><br><span class="line">➜  git push origin &lt;my-pr(第二步中取的名字)&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="第六步：review-amp-merge"><a href="#第六步：review-amp-merge" class="headerlink" title="第六步：review &amp; merge"></a>第六步：review &amp; merge</h4><blockquote>
+<p>我的第一次提交 <a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/docs/pull/5747">https://github.com/PaddlePaddle/docs/pull/5747</a><br>几点小的总结：</p>
+</blockquote>
+<ul>
+<li>尽量把自己在做的过程中不确定的内容进行说明</li>
+<li>把疑问的地方进行复现</li>
+<li>每一轮的回复都要进行礼貌性的回答</li>
+<li>尽量把每一版的修改都进行分点的说明，第一做了XXX，第二做了XXXX……</li>
+<li></li>
+</ul>
+<h4 id="小插曲：CheckPRTemplate-一定要规范"><a href="#小插曲：CheckPRTemplate-一定要规范" class="headerlink" title="小插曲：CheckPRTemplate 一定要规范"></a>小插曲：CheckPRTemplate 一定要规范</h4><p>如果希望 Paddle 能够接受你的提交，至少需要满足以下三点：</p>
+<ul>
+<li>单元测试通过 —— Docs-NEW</li>
+<li>文档PR格式检测通过 —— CheckPRTemplate</li>
+<li>同意签署开源贡献者协议 —— license&#x2F;cla<br>一般Docs-NEW可能需要比较长的时间进行检测，偶尔也需要排队等待。所以这次我以为 CheckPRTemplat 也是一样需要等，但是等了整整一天时间……最后发现其实PR格式不是特别正确（虽然也有人格式不正确但通过了PR格式检测），最终参考 <a target="_blank" rel="noopener" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/dev_guides/git_guides/paddle_ci_manual_cn.html#checkprtemplate">checkprtemplate</a> 。修改后的格式如下：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251453294.jpg"></p>
+<p>修改之后秒过。</p>
+<h2 id="Gradio项目"><a href="#Gradio项目" class="headerlink" title="Gradio项目"></a>Gradio项目</h2><p>一位同学进行的一个非常标准的开源参与流程：</p>
+<ol>
+<li><p>提Issues。在这个过程中以项目管理者角度出发，顺带说明了四点问题：</p>
+<ol>
+<li><strong>是否已存在类似Issue。</strong>I have searched to see if a similar issue already exists.（我已经搜索过是否已经存在类似问题。）</li>
+<li><strong>描述你的问题和想添加的功能。</strong>Is your feature request related to a problem? Please describe.（您的功能请求是否与问题相关？请描述。）</li>
+<li><strong>提出解决方案。</strong>Describe the solution you’d like.（描述您想要的解决方案）</li>
+<li><strong>是否有前情提要。</strong>Additional context.（附加上下文）</li>
+</ol>
+<p> <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251453976.jpg"></p>
+</li>
+<li><p>请求合并Merge。在这个过程中以项目管理者角度出发，顺带说明了四点问题：</p>
+<ol>
+<li>relevant motivation.（相关动机）</li>
+<li>a summary of the change.（总结你做出的更改）</li>
+<li>which issue is fixed.（解决了Issue中的哪一个）</li>
+<li>any additional dependencies that are required for this change.（在本次变更中是否有其他依赖项）</li>
+</ol>
+<p> <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202404251454853.jpg"></p>
+</li>
+</ol>
+<hr>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><p>git commit之后，想撤销commit</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --soft HEAD^</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>视频链接</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18T411z7R4/?share_source=copy_web&vd_source=48383e849d4fc23ac2e38278a3df1b87">【如何正确地提github issue？开源项目作者来和你聊聊这个重要技能】</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV19e4y1q7JJ/?share_source=copy_web&vd_source=48383e849d4fc23ac2e38278a3df1b87">【十分钟学会正确的github工作流，和开源作者们使用同一套流程】</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/chinese/news/how-to-make-your-first-pull-request-on-github/">【freeCodeCamp | 如何在 GitHub 提交第一个 pull request】</a></li>
+</ol>
+</li>
+<li><p>AIstudio上持久化安装pip包</p>
+<ol>
+<li>提前运行 <code>cd ~ &amp;&amp; mkdir loca_data &amp;&amp; ln -s local_data.local</code></li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://zade23.github.io/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/" title="【Git】一个流畅的开源贡献流程" target="_blank" rel="external">https://zade23.github.io/2024/04/25/【Git】一个流畅的开源贡献流程/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/zade23" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/zade23" target="_blank"><span class="text-dark">Android</span><small class="ml-1x">Student &amp; Coder</small></a></h3>
+        <div>Happy Coding!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2024/04/22/%E3%80%90Unity%E3%80%91%E7%A0%B4%E8%A7%A3%E7%89%88%E5%AE%89%E8%A3%85%E6%8C%87%E5%8C%97/" title="【Unity】破解版安装指北"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,wechat,facebook,twitter"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/zade23" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://weibo.com/u/5382156286" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2024 Android
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>

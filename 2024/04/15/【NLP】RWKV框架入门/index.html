@@ -18,15 +18,15 @@
   
   
   <title>【NLP】RWKV框架入门 | ANdRoid&#39;s BLOG</title>
-  <meta name="description" content="全文从以下几个方面展开：  RWKV是什么 RWKV的特殊性 RWKV和Transformer的差别 Multi-Head Attention Self-Attention   效果对比 运行速度 显存占用 效果评估     RWKV是什么RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和扩展性。 RWKV代表的是Read-Write-Key">
+  <meta name="description" content="全文从以下几个方面展开：  RWKV是什么 架构组成 特殊性分析   为什么选型RWKV做大语言基底模型的预研 RWKV和Transformer的差别 结构建模 Self-Attention Multi-Head Attention RWKV结构 效果表现（7B） 结语     RWKV是什么RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【NLP】RWKV框架入门">
 <meta property="og:url" content="https://zade23.github.io/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="ANdRoid&#39;s BLOG">
-<meta property="og:description" content="全文从以下几个方面展开：  RWKV是什么 RWKV的特殊性 RWKV和Transformer的差别 Multi-Head Attention Self-Attention   效果对比 运行速度 显存占用 效果评估     RWKV是什么RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和扩展性。 RWKV代表的是Read-Write-Key">
+<meta property="og:description" content="全文从以下几个方面展开：  RWKV是什么 架构组成 特殊性分析   为什么选型RWKV做大语言基底模型的预研 RWKV和Transformer的差别 结构建模 Self-Attention Multi-Head Attention RWKV结构 效果表现（7B） 结语     RWKV是什么RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-15T03:56:48.000Z">
-<meta property="article:modified_time" content="2024-04-16T11:35:09.899Z">
+<meta property="article:modified_time" content="2024-04-25T07:00:53.080Z">
 <meta property="article:author" content="Android">
 <meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Deeplearning/">Deeplearning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-Workflow/">Git Workflow</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Deeplearning/">Deeplearning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-Workflow/">Git Workflow</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -203,7 +203,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Engine/" rel="tag">Game Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Training/" rel="tag">Training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/" rel="tag">conda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" rel="tag">工具网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="tag">经济学小知识</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Engine/" rel="tag">Game Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Training/" rel="tag">Training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/" rel="tag">conda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" rel="tag">工具网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="tag">经济学小知识</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -213,7 +213,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/C/" style="font-size: 13.5px;">C++</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Game-Engine/" style="font-size: 13px;">Game Engine</a> <a href="/tags/Git/" style="font-size: 13.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/NLP/" style="font-size: 13.5px;">NLP</a> <a href="/tags/PyTorch/" style="font-size: 13px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Training/" style="font-size: 13px;">Training</a> <a href="/tags/Transformers/" style="font-size: 13px;">Transformers</a> <a href="/tags/conda/" style="font-size: 13px;">conda</a> <a href="/tags/environment/" style="font-size: 13px;">environment</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" style="font-size: 13px;">工具网站</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">经济学小知识</a>
+      <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Game-Engine/" style="font-size: 13px;">Game Engine</a> <a href="/tags/Git/" style="font-size: 13.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/PyTorch/" style="font-size: 13px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Training/" style="font-size: 13px;">Training</a> <a href="/tags/Transformers/" style="font-size: 13px;">Transformers</a> <a href="/tags/conda/" style="font-size: 13px;">conda</a> <a href="/tags/environment/" style="font-size: 13px;">environment</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" style="font-size: 13px;">工具网站</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">经济学小知识</a>
     </div>
   </div>
 
@@ -222,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -234,6 +234,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Git-Workflow/">Git Workflow</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/" class="title">【Git】一个流畅的开源贡献流程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-25T04:03:15.000Z" itemprop="datePublished">2024-04-25</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -290,21 +305,6 @@
               </p>
               <p class="item-date">
                 <time datetime="2024-04-15T02:59:34.000Z" itemprop="datePublished">2024-04-15</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2024/03/25/KMP%E7%AE%97%E6%B3%95-%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E5%A4%8D%E5%8D%95%E5%85%83/" class="title">KMP算法-解决最小重复单元</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2024-03-25T02:17:58.000Z" itemprop="datePublished">2024-03-25</time>
               </p>
             </div>
           </li>
@@ -366,7 +366,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/04/15/%E3%80%90NLP%E3%80%91RWKV%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.2k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5.3k(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 20(分)</span>
@@ -378,17 +378,19 @@
       
         <p>全文从以下几个方面展开：</p>
 <ul>
-<li>RWKV是什么</li>
-<li>RWKV的特殊性</li>
-<li>RWKV和Transformer的差别<ul>
-<li>Multi-Head Attention</li>
-<li>Self-Attention</li>
+<li><a href="#rwkv%E6%98%AF%E4%BB%80%E4%B9%88">RWKV是什么</a><ul>
+<li><a href="#%E6%9E%B6%E6%9E%84%E7%BB%84%E6%88%90">架构组成</a></li>
+<li><a href="#%E7%89%B9%E6%AE%8A%E6%80%A7%E5%88%86%E6%9E%90">特殊性分析</a></li>
 </ul>
 </li>
-<li>效果对比<ul>
-<li>运行速度</li>
-<li>显存占用</li>
-<li>效果评估</li>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E5%9E%8Brwkv%E5%81%9A%E5%A4%A7%E8%AF%AD%E8%A8%80%E5%9F%BA%E5%BA%95%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%A2%84%E7%A0%94">为什么选型RWKV做大语言基底模型的预研</a></li>
+<li><a href="#rwkv%E5%92%8Ctransformer%E7%9A%84%E5%B7%AE%E5%88%AB">RWKV和Transformer的差别</a></li>
+<li><a href="#%E7%BB%93%E6%9E%84%E5%BB%BA%E6%A8%A1">结构建模</a><ul>
+<li><a href="#self-attention">Self-Attention</a></li>
+<li><a href="#multi-head-attention">Multi-Head Attention</a></li>
+<li><a href="#rwkv%E7%BB%93%E6%9E%84">RWKV结构</a></li>
+<li><a href="#%E6%95%88%E6%9E%9C%E8%A1%A8%E7%8E%B07b">效果表现（7B）</a></li>
+<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
 </ul>
 </li>
 </ul>
@@ -396,7 +398,7 @@
 <h2 id="RWKV是什么"><a href="#RWKV是什么" class="headerlink" title="RWKV是什么"></a>RWKV是什么</h2><p>RWKV架构是一种针对分布式存储系统的架构设计，主要关注于提高数据的可靠性、可用性和一致性，同时优化性能和扩展性。</p>
 <p>RWKV代表的是Read-Write-Key-Value，这个架构通过分离读（R）和写（W）操作，以及将键（Key）和值（Value）分离，来实现其设计目标。</p>
 <h3 id="架构组成"><a href="#架构组成" class="headerlink" title="架构组成"></a>架构组成</h3><ol>
-<li><strong>读写分离</strong>：RWKV架构中，<strong>读操作</strong>和<strong>写操作</strong>是分开处理的。这意味着系统可以针对读操作进行优化，比如通过缓存机制来提高读取速度，而写操作则可以专注于数据的持久化和一致性保证。</li>
+<li><strong>读写分离</strong>：RWKV架构中，<strong>读操作</strong> 和 <strong>写操作</strong> 是分开处理的。这意味着系统可以针对读操作进行优化，比如通过缓存机制来提高读取速度，而写操作则可以专注于数据的持久化和一致性保证。</li>
 <li><strong>键值存储</strong>：在这种架构中，键（Key）和值（Value）是分开存储的。键通常包含了定位数据所需的全部信息，而值则是实际的数据内容。这种分离使得系统可以更加灵活地管理数据，比如可以实现键的索引，从而加快查找速度。</li>
 <li><strong>数据分区</strong>：为了提高系统的扩展性，RWKV架构通常会将数据进行分区。每个分区可以独立地进行读写操作，这样可以在不影响整个系统的情况下，对单个分区进行扩展或维护。</li>
 </ol>
@@ -486,7 +488,7 @@
 <p>接下来，我们就在上面已经实现的自注意力代码基础上进一步实现这个多头注意力机制。</p>
 <p>实现多头注意力机制的几个步骤：</p>
 <ol>
-<li>初始化参数：为每个头粉笔初始化<strong>查询（Q）</strong>、<strong>键（K）</strong>和<strong>值（V）</strong>矩阵。</li>
+<li>初始化参数：为每个头粉笔初始化查询（Q）、键（K）和值（V）矩阵。</li>
 <li>分割输入：将输入向量分割成多个<strong>头（Head）</strong>。</li>
 <li>并行计算：对每个头执行自注意力计算。</li>
 <li>合并头：将所有头的输出合并回一个单一的输出。</li>
@@ -503,12 +505,8 @@
 <p>RWKV的结构难点在它的<code>channel_mixing</code>和<code>time_mixing</code>，这是两个类似RNN实现方法的递归模块。</p>
 <p>其中，<code>state</code>的状态保存和更新过程是动态规划的实现，这也是在时间复杂度上能达到O(n)的原因。</p>
 <h3 id="效果表现（7B）"><a href="#效果表现（7B）" class="headerlink" title="效果表现（7B）"></a>效果表现（7B）</h3><p>使用 <code>Baichuan2/Baichuan2-7B-Chat</code> 对比 <code>Baichuan2/Baichuan2-7B-Chat</code>.</p>
-<p>实验过程中RWKV模型使用体感非常不舒服，因为RWKV在提示词要求上非常的“死板”。</p>
-<p>RWKV就像是LLM界的”汇编语言”，它能够在450mb参数下进行对话的模型(Transformer架构的模型做不到)，但是在同标准的3B&#x2F;7B模型下效果非常奇怪……要按照它的专属提示词方式才能正常生成。（也有可能是我的打开方式不对）</p>
-<p>RWKV模型的加载耗时浮动非常大，耗时区间[9,100]，单位为秒。</p>
-<p>Transformer模型加载耗时比较固定，耗时区间[65,75]，单位为秒。</p>
-<p>在同样使用编码器-解码器的方式进行文本生成任务时，RWKV推理耗时并不如Transformer模型。</p>
-<p>在生成内容的表现效果上，大量重复和复读的部分(即使已经设置<code>repetition_penalty</code>参数)，排版效果差。效果不尽人意。</p>
+<p>在推理部分，二者皆使用 编码器-解码器 架构生成文本，最大生成Tokens为500，其余所有参数一致，运行环境一致。</p>
+<p>对比结果如下：</p>
 <table>
 <thead>
 <tr>
@@ -553,6 +551,11 @@
 <td><strong><u>介绍一下声音产生的原理。让我们慢慢来，一步一步分析并做出专业的回答。</u></strong><br /><br /> 1. 声波的产生：当物体振动时，会带动周围的空气分子一起振动。这种振动以波的形式传播，我们就称之为声波。声波的频率、振幅和方向取决于物体的振动特性以及空气的介质。 <br /><br />2. 声音的传播：声波在空气中以波的形式传播，其速度取决于空气的温度、压力和湿度。在标准大气压下，声波在空气中的传播速度约为340米&#x2F;秒。声波在传播过程中会受到各种干扰，如吸收、散射和反射等，这会导致声波的衰减和改变方向。<br /><br /> 3. 声音的接收：当我们听到声音时，是由于声波经过耳朵的传导作用，使外耳、耳膜、中耳和内耳等结构发生振动。这些振动通过听觉神经传递到大脑，大脑对振动信号进行处理，从而产生声音的感觉。 <br /><br />4. 声音的分类：根据声音的频率范围，我们可以将声音分为低频、中频和高频声音。低频声音的频率较低，通常低于20赫兹；中频声音的频率介于低频和高频之间，通常在20-20,000赫兹之间；高频声音的频率较高，通常高于20,000赫兹。此外，我们还可以根据声音的音调、音色和音量等特征来描述声音。<br /><br /> 综上所述，声音是由物体的振动引起的，通过空气传播，经过耳朵的传导作用被感知。声音具有频率、振幅、方向和强度等特征，可以根据这些特征进行分类和描述。</td>
 </tr>
 </tbody></table>
+<p>实验过程中RWKV使用手感非常不舒服，在提示词上要求“死板”。</p>
+<p>RWKV就像是LLM界的”汇编语言”，该架构能够在450mb参数下进行对话的模型(Transformer架构的模型做不到)，但是在同标准的3B&#x2F;7B模型下效果非常奇怪……要按照它的专属提示词方式才能正常生成。</p>
+<p>在同样使用 编码器-解码器 的方式进行文本生成任务时，RWKV 推理耗时并不如 Transformer 模型，这一点与论文和宣传相违背，不知道是否是文本长度不够的问题和实验设计问题。</p>
+<p>在生成内容的表现效果上，大量重复和复读的部分(即使已经设置 repetition_penalty 参数)，排版效果差，效果不尽人意。</p>
+<p>因此，在追求模型效果的架构选择上：<strong>Attention is all you need.</strong></p>
 <h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>一个可以在非常轻量化环境下运行的模型，运行内存不到3G(2923Mib)，在不追求精度和高并发的任务上有挖掘的空间。</p>
 <p>这样一个解决“最低标准”问题的模型，在追求性价比的场景下，需要做比较多的应用场景对比。</p>
 

@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>合作开发中Git工作流程的细节 | ANdRoid&#39;s BLOG</title>
+  <title>【Git】合作开发中Git工作流程的细节 | ANdRoid&#39;s BLOG</title>
   <meta name="description" content="仓库中各分支的职责 清晰的Commit   记录开发过程中，提交代码仓库的一些经验总结（持续更新……） 仓库中各分支的职责 master分支：master分支是存放发布上线的代码的默认位置。当某个功能经过验证和测试后，将develop分支合并到master分支，并为该版本打上相应的标签（例如x.0.0，表示某个大版本的编号）。master分支应该是稳定且经过充分测试的代码。  develop分支">
 <meta property="og:type" content="article">
-<meta property="og:title" content="合作开发中Git工作流程的细节">
-<meta property="og:url" content="https://zade23.github.io/2024/03/11/%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/index.html">
+<meta property="og:title" content="【Git】合作开发中Git工作流程的细节">
+<meta property="og:url" content="https://zade23.github.io/2024/03/11/%E3%80%90Git%E3%80%91%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/index.html">
 <meta property="og:site_name" content="ANdRoid&#39;s BLOG">
 <meta property="og:description" content="仓库中各分支的职责 清晰的Commit   记录开发过程中，提交代码仓库的一些经验总结（持续更新……） 仓库中各分支的职责 master分支：master分支是存放发布上线的代码的默认位置。当某个功能经过验证和测试后，将develop分支合并到master分支，并为该版本打上相应的标签（例如x.0.0，表示某个大版本的编号）。master分支应该是稳定且经过充分测试的代码。  develop分支">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-11T08:39:05.000Z">
-<meta property="article:modified_time" content="2024-03-18T09:13:48.612Z">
+<meta property="article:modified_time" content="2024-04-25T06:59:36.754Z">
 <meta property="article:author" content="Android">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zade23.github.io/2024/03/11/%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/index.html">
+  <link rel="canonical" href="https://zade23.github.io/2024/03/11/%E3%80%90Git%E3%80%91%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/index.html">
   
     <link rel="alternate" href="/atom.xml" title="ANdRoid&#39;s BLOG" type="application/atom+xml">
   
@@ -193,7 +193,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Deeplearning/">Deeplearning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-Workflow/">Git Workflow</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Deeplearning/">Deeplearning</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git-Workflow/">Git Workflow</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Unity/">Unity</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/whatever/">whatever</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -203,7 +203,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Engine/" rel="tag">Game Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Training/" rel="tag">Training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/" rel="tag">conda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" rel="tag">工具网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="tag">经济学小知识</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Game-Engine/" rel="tag">Game Engine</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Training/" rel="tag">Training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformers/" rel="tag">Transformers</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conda/" rel="tag">conda</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/environment/" rel="tag">environment</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" rel="tag">工具网站</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" rel="tag">经济学小知识</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -213,7 +213,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/C/" style="font-size: 13.5px;">C++</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Game-Engine/" style="font-size: 13px;">Game Engine</a> <a href="/tags/Git/" style="font-size: 13.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/NLP/" style="font-size: 13.5px;">NLP</a> <a href="/tags/PyTorch/" style="font-size: 13px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Training/" style="font-size: 13px;">Training</a> <a href="/tags/Transformers/" style="font-size: 13px;">Transformers</a> <a href="/tags/conda/" style="font-size: 13px;">conda</a> <a href="/tags/environment/" style="font-size: 13px;">environment</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" style="font-size: 13px;">工具网站</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">经济学小知识</a>
+      <a href="/tags/C/" style="font-size: 13.33px;">C++</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Game-Engine/" style="font-size: 13px;">Game Engine</a> <a href="/tags/Git/" style="font-size: 13.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/PyTorch/" style="font-size: 13px;">PyTorch</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Training/" style="font-size: 13px;">Training</a> <a href="/tags/Transformers/" style="font-size: 13px;">Transformers</a> <a href="/tags/conda/" style="font-size: 13px;">conda</a> <a href="/tags/environment/" style="font-size: 13px;">environment</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/" style="font-size: 13px;">工具网站</a> <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/" style="font-size: 13px;">经济学小知识</a>
     </div>
   </div>
 
@@ -222,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">三月 2024</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/05/">五月 2023</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -234,6 +234,21 @@
     <div class="widget-body">
       <ul class="recent-post-list list-unstyled no-thumbnail">
         
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Git-Workflow/">Git Workflow</a>
+              </p>
+              <p class="item-title">
+                <a href="/2024/04/25/%E3%80%90Git%E3%80%91%E4%B8%80%E4%B8%AA%E6%B5%81%E7%95%85%E7%9A%84%E5%BC%80%E6%BA%90%E8%B4%A1%E7%8C%AE%E6%B5%81%E7%A8%8B/" class="title">【Git】一个流畅的开源贡献流程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2024-04-25T04:03:15.000Z" itemprop="datePublished">2024-04-25</time>
+              </p>
+            </div>
+          </li>
+          
           <li>
             
             <div class="item-inner">
@@ -294,21 +309,6 @@
             </div>
           </li>
           
-          <li>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">数据结构和算法</a>
-              </p>
-              <p class="item-title">
-                <a href="/2024/03/25/KMP%E7%AE%97%E6%B3%95-%E8%A7%A3%E5%86%B3%E6%9C%80%E5%B0%8F%E9%87%8D%E5%A4%8D%E5%8D%95%E5%85%83/" class="title">KMP算法-解决最小重复单元</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2024-03-25T02:17:58.000Z" itemprop="datePublished">2024-03-25</time>
-              </p>
-            </div>
-          </li>
-          
       </ul>
     </div>
   </div>
@@ -322,14 +322,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-合作开发中Git工作流程的细节" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-【Git】合作开发中Git工作流程的细节" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      合作开发中Git工作流程的细节
+      【Git】合作开发中Git工作流程的细节
     </h1>
   
 
@@ -337,7 +337,7 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2024/03/11/%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/" class="article-date">
+	<a href="/2024/03/11/%E3%80%90Git%E3%80%91%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/" class="article-date">
 	  <time datetime="2024-03-11T08:39:05.000Z" itemprop="datePublished">2024-03-11</time>
 	</a>
 </span>
@@ -363,7 +363,7 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/03/11/%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/03/11/%E3%80%90Git%E3%80%91%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/#comments" class="article-comment-link">评论</a></span>
         
 	
 		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.1k(字)</span>
@@ -441,7 +441,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://zade23.github.io/2024/03/11/%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/" title="合作开发中Git工作流程的细节" target="_blank" rel="external">https://zade23.github.io/2024/03/11/合作开发中Git工作流程的细节/</a>
+      <a href="https://zade23.github.io/2024/03/11/%E3%80%90Git%E3%80%91%E5%90%88%E4%BD%9C%E5%BC%80%E5%8F%91%E4%B8%ADGit%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E7%9A%84%E7%BB%86%E8%8A%82/" title="【Git】合作开发中Git工作流程的细节" target="_blank" rel="external">https://zade23.github.io/2024/03/11/【Git】合作开发中Git工作流程的细节/</a>
     </li>
     
     <li class="post-copyright-license">
