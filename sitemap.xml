@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zade23.github.io/2024/05/27/Ilya%E7%9A%84%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/</loc>
+    
+    <lastmod>2024-05-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zade23.github.io/2024/05/10/%E3%80%90%E9%9A%8F%E7%AC%94%E3%80%91%E5%85%B3%E4%BA%8E%E4%B8%AA%E4%BA%BA%E6%88%90%E9%95%BF%E7%9A%84%E6%80%9D%E8%80%83/</loc>
     
     <lastmod>2024-05-10</lastmod>
@@ -283,7 +292,7 @@
 
   <url>
     <loc>https://zade23.github.io/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -291,98 +300,98 @@
   
   <url>
     <loc>https://zade23.github.io/tags/Hexo/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%B0%8F%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/%E5%B7%A5%E5%85%B7%E7%BD%91%E7%AB%99/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/Git/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/Docker/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/Python/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/conda/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/environment/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/C/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/PyTorch/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/Training/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/Transformers/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/NLP/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/tags/Game-Engine/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -391,56 +400,56 @@
   
   <url>
     <loc>https://zade23.github.io/categories/whatever/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/Git-Workflow/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/Deeplearning/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/LLM/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/%E6%9D%82%E9%A1%B9/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://zade23.github.io/categories/Unity/</loc>
-    <lastmod>2024-05-10</lastmod>
+    <lastmod>2024-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
