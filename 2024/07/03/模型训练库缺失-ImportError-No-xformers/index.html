@@ -17,19 +17,22 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>《健壮的Python》读书笔记-Day1 | ANdRoid&#39;s BLOG</title>
-  <meta property="og:type" content="article">
-<meta property="og:title" content="《健壮的Python》读书笔记-Day1">
-<meta property="og:url" content="https://zade23.github.io/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/index.html">
+  <title>模型训练库缺失 ImportError: No xformers | ANdRoid&#39;s BLOG</title>
+  <meta name="description" content="发现问题借助Lora训练Diffusion模型的时候，出现了报错： ImportError: No xformers 分析问题安装对应版本的Transformer模型即可解决问题，参考：https:&#x2F;&#x2F;github.com&#x2F;Akegarasu&#x2F;lora-scripts&#x2F;issues&#x2F;422#issuecomment-2127945481 解决问题找到当前运行训练任务的机器，确定对应的版本： 123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模型训练库缺失 ImportError: No xformers">
+<meta property="og:url" content="https://zade23.github.io/2024/07/03/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%93%E7%BC%BA%E5%A4%B1-ImportError-No-xformers/index.html">
 <meta property="og:site_name" content="ANdRoid&#39;s BLOG">
+<meta property="og:description" content="发现问题借助Lora训练Diffusion模型的时候，出现了报错： ImportError: No xformers 分析问题安装对应版本的Transformer模型即可解决问题，参考：https:&#x2F;&#x2F;github.com&#x2F;Akegarasu&#x2F;lora-scripts&#x2F;issues&#x2F;422#issuecomment-2127945481 解决问题找到当前运行训练任务的机器，确定对应的版本： 123">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-03-20T13:45:05.000Z">
-<meta property="article:modified_time" content="2024-03-20T13:45:51.762Z">
+<meta property="article:published_time" content="2024-07-03T12:03:21.000Z">
+<meta property="article:modified_time" content="2024-07-03T12:08:56.675Z">
 <meta property="article:author" content="Android">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="conda">
+<meta property="article:tag" content="environment">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zade23.github.io/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/index.html">
+  <link rel="canonical" href="https://zade23.github.io/2024/07/03/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%93%E7%BC%BA%E5%A4%B1-ImportError-No-xformers/index.html">
   
     <link rel="alternate" href="/atom.xml" title="ANdRoid&#39;s BLOG" type="application/atom+xml">
   
@@ -320,14 +323,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-《健壮的Python》读书笔记-Day1" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-模型训练库缺失-ImportError-No-xformers" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      《健壮的Python》读书笔记-Day1
+      模型训练库缺失 ImportError: No xformers
     </h1>
   
 
@@ -335,20 +338,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/" class="article-date">
-	  <time datetime="2024-03-20T13:45:05.000Z" itemprop="datePublished">2024-03-20</time>
+	<a href="/2024/07/03/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%93%E7%BC%BA%E5%A4%B1-ImportError-No-xformers/" class="article-date">
+	  <time datetime="2024-07-03T12:03:21.000Z" itemprop="datePublished">2024-07-03</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a>
+    <a class="article-category-link" href="/categories/Deeplearning/">Deeplearning</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Python/" rel="tag">Python</a>
+	<a class="article-tag-link-link" href="/tags/conda/" rel="tag">conda</a>, <a class="article-tag-link-link" href="/tags/environment/" rel="tag">environment</a>
   </span>
 
 
@@ -361,10 +364,10 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2024/07/03/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%93%E7%BC%BA%E5%A4%B1-ImportError-No-xformers/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 0(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 153(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -374,7 +377,17 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h3 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h3><p>借助Lora训练Diffusion模型的时候，出现了报错：</p>
+<p><code>ImportError: No xformers</code></p>
+<h3 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h3><p>安装对应版本的Transformer模型即可解决问题，参考：<a target="_blank" rel="noopener" href="https://github.com/Akegarasu/lora-scripts/issues/422#issuecomment-2127945481">https://github.com/Akegarasu/lora-scripts/issues/422#issuecomment-2127945481</a></p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>找到当前运行训练任务的机器，确定对应的版本：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">pirnt(torch.__version__)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.3</span><span class="number">.1</span> + cu121</span><br></pre></td></tr></table></figure>
+
+<p>从输出定位 <strong>torch版本</strong> 和 <strong>cuda版本</strong>，从 <a target="_blank" rel="noopener" href="https://github.com/facebookresearch/xformers?tab=readme-ov-file#installing-xformers">https://github.com/facebookresearch/xformers?tab=readme-ov-file#installing-xformers</a> 找 torch + cuda + xformers 三者关系都能对应上的版本。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cuda 12.1 version</span></span><br><span class="line">pip3 install -U xformers --index-url https://download.pytorch.org/whl/cu121</span><br></pre></td></tr></table></figure>
+
+<p>安装成功，问题解决。</p>
+
       
     </div>
     <div class="article-footer">
@@ -383,7 +396,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://zade23.github.io/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/" title="《健壮的Python》读书笔记-Day1" target="_blank" rel="external">https://zade23.github.io/2024/03/20/《健壮的Python》读书笔记-Day1/</a>
+      <a href="https://zade23.github.io/2024/07/03/%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BA%93%E7%BC%BA%E5%A4%B1-ImportError-No-xformers/" title="模型训练库缺失 ImportError: No xformers" target="_blank" rel="external">https://zade23.github.io/2024/07/03/模型训练库缺失-ImportError-No-xformers/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -429,13 +442,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2024/03/21/Transformers-FlashBack/" title="Transformers_FlashBack"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2024/03/19/LLaMA-Factory%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" title="LLaMA-Factory原理与底层实现"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2024/05/27/%E3%80%90%E9%98%85%E8%AF%BB%E3%80%91Ilya%E7%9A%84%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/" title="【阅读】Ilya的论文阅读清单"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
