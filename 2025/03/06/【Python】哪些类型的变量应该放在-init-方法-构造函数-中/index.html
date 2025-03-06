@@ -17,21 +17,20 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>玩转Docker学习笔记 | ANdRoid&#39;s BLOG</title>
-  <meta name="description" content="镜像相关指令 容器相关指令 网络相关指令 数据卷相关指令 Docker Compose相关指令（使用docker-compose） 通过 DockerFile 构建 Docker Image   镜像相关指令 docker pull &lt;image&gt;：从远程仓库拉取一个镜像或仓库到本地。 docker build -t &lt;tag&gt; .：使用当前目录的Dockerfile构建">
+  <title>【Python】哪些类型的变量应该放在__init__方法(构造函数)中 | ANdRoid&#39;s BLOG</title>
+  <meta name="description" content="0起因 1以下类型的变量放在__init__ 2总结  0起因最近，在刷题的过程中思考如何把代码的向量命名规范化，进一步的希望规范化完整的代码功能和设计模式。 以 leetcode第3题：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;longest-substring-without-repeating-characters&#x2F;为例。 正常代码为： 123456789101112131">
 <meta property="og:type" content="article">
-<meta property="og:title" content="玩转Docker学习笔记">
-<meta property="og:url" content="https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="【Python】哪些类型的变量应该放在__init__方法(构造函数)中">
+<meta property="og:url" content="https://zade23.github.io/2025/03/06/%E3%80%90Python%E3%80%91%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8-init-%E6%96%B9%E6%B3%95-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E4%B8%AD/index.html">
 <meta property="og:site_name" content="ANdRoid&#39;s BLOG">
-<meta property="og:description" content="镜像相关指令 容器相关指令 网络相关指令 数据卷相关指令 Docker Compose相关指令（使用docker-compose） 通过 DockerFile 构建 Docker Image   镜像相关指令 docker pull &lt;image&gt;：从远程仓库拉取一个镜像或仓库到本地。 docker build -t &lt;tag&gt; .：使用当前目录的Dockerfile构建">
+<meta property="og:description" content="0起因 1以下类型的变量放在__init__ 2总结  0起因最近，在刷题的过程中思考如何把代码的向量命名规范化，进一步的希望规范化完整的代码功能和设计模式。 以 leetcode第3题：https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;longest-substring-without-repeating-characters&#x2F;为例。 正常代码为： 123456789101112131">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-07T07:30:56.000Z">
-<meta property="article:modified_time" content="2024-03-11T10:00:59.954Z">
+<meta property="article:published_time" content="2025-03-06T08:49:49.000Z">
+<meta property="article:modified_time" content="2025-03-06T08:56:20.638Z">
 <meta property="article:author" content="Android">
-<meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+  <link rel="canonical" href="https://zade23.github.io/2025/03/06/%E3%80%90Python%E3%80%91%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8-init-%E6%96%B9%E6%B3%95-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E4%B8%AD/index.html">
   
     <link rel="alternate" href="/atom.xml" title="ANdRoid&#39;s BLOG" type="application/atom+xml">
   
@@ -322,14 +321,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-玩转Docker学习笔记" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-【Python】哪些类型的变量应该放在-init-方法-构造函数-中" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      玩转Docker学习笔记
+      【Python】哪些类型的变量应该放在__init__方法(构造函数)中
     </h1>
   
 
@@ -337,17 +336,12 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-	  <time datetime="2023-11-07T07:30:56.000Z" itemprop="datePublished">2023-11-07</time>
+	<a href="/2025/03/06/%E3%80%90Python%E3%80%91%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8-init-%E6%96%B9%E6%B3%95-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E4%B8%AD/" class="article-date">
+	  <time datetime="2025-03-06T08:49:49.000Z" itemprop="datePublished">2025-03-06</time>
 	</a>
 </span>
         
         
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Docker/" rel="tag">Docker</a>
-  </span>
-
 
         
 	<span class="article-read hidden-xs">
@@ -358,13 +352,13 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/03/06/%E3%80%90Python%E3%80%91%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8-init-%E6%96%B9%E6%B3%95-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E4%B8%AD/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.8k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
 	
 
       </div>
@@ -372,89 +366,82 @@
     <div class="article-entry marked-body" itemprop="articleBody">
       
         <ul>
-<li><a href="#%E9%95%9C%E5%83%8F%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4">镜像相关指令</a></li>
-<li><a href="#%E5%AE%B9%E5%99%A8%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4">容器相关指令</a></li>
-<li><a href="#%E7%BD%91%E7%BB%9C%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4">网络相关指令</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E5%8D%B7%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4">数据卷相关指令</a></li>
-<li><a href="#docker-compose%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4%E4%BD%BF%E7%94%A8docker-compose">Docker Compose相关指令（使用<code>docker-compose</code>）</a></li>
-<li><a href="#%E9%80%9A%E8%BF%87-dockerfile-%E6%9E%84%E5%BB%BA-docker-image">通过 DockerFile 构建 Docker Image</a></li>
+<li><a href="#0%E8%B5%B7%E5%9B%A0">0起因</a></li>
+<li><a href="#1%E4%BB%A5%E4%B8%8B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E6%94%BE%E5%9C%A8__init__">1以下类型的变量放在<code>__init__</code></a></li>
+<li><a href="#2%E6%80%BB%E7%BB%93">2总结</a></li>
 </ul>
-<hr>
-<h3 id="镜像相关指令"><a href="#镜像相关指令" class="headerlink" title="镜像相关指令"></a>镜像相关指令</h3><ul>
-<li><code>docker pull &lt;image&gt;</code>：从远程仓库拉取一个镜像或仓库到本地。</li>
-<li><code>docker build -t &lt;tag&gt; .</code>：使用当前目录的Dockerfile构建一个新的镜像。</li>
-<li><code>docker images</code>：列出本地存储的镜像。</li>
-<li><code>docker rmi &lt;image&gt;</code>：删除一个或多个本地的镜像。</li>
-<li><code>docker tag &lt;image&gt; &lt;new_tag&gt;</code>：为镜像添加一个新的标签。</li>
-</ul>
-<h3 id="容器相关指令"><a href="#容器相关指令" class="headerlink" title="容器相关指令"></a>容器相关指令</h3><ul>
-<li><code>docker run &lt;image&gt;</code>：创建一个新的容器并运行一个命令。</li>
-<li><code>docker ps</code>：列出当前运行的容器。</li>
-<li><code>docker ps -a</code>：列出所有容器，包括未运行的。</li>
-<li><code>docker stop &lt;container&gt;</code>：停止一个或多个正在运行的容器。</li>
-<li><code>docker start &lt;container&gt;</code>：启动一个或多个已停止运行的容器。</li>
-<li><code>docker restart &lt;container&gt;</code>：重启容器。</li>
-<li><code>docker rm &lt;container&gt;</code>：删除一个或多个容器。</li>
-<li><code>docker logs &lt;container&gt;</code>：获取容器的日志。</li>
-<li><code>docker exec -it &lt;container&gt; &lt;command&gt;</code>：在运行的容器中执行命令，通常用于进入容器。</li>
-</ul>
-<h3 id="网络相关指令"><a href="#网络相关指令" class="headerlink" title="网络相关指令"></a>网络相关指令</h3><ul>
-<li><code>docker network ls</code>：列出所有网络。</li>
-<li><code>docker network create &lt;options&gt; &lt;network_name&gt;</code>：创建一个新的网络。</li>
-<li><code>docker network rm &lt;network&gt;</code>：删除一个或多个网络。</li>
-<li><code>docker network connect &lt;network&gt; &lt;container&gt;</code>：连接一个容器到一个网络。</li>
-<li><code>docker network disconnect &lt;network&gt; &lt;container&gt;</code>：断开容器与网络的连接。</li>
-</ul>
-<h3 id="数据卷相关指令"><a href="#数据卷相关指令" class="headerlink" title="数据卷相关指令"></a>数据卷相关指令</h3><ul>
-<li><code>docker volume create &lt;name&gt;</code>：创建一个新的卷。</li>
-<li><code>docker volume ls</code>：列出所有卷。</li>
-<li><code>docker volume rm &lt;volume&gt;</code>：删除一个或多个卷。</li>
-<li><code>docker volume inspect &lt;volume&gt;</code>：显示详细的卷信息。</li>
-</ul>
-<h3 id="Docker-Compose相关指令（使用docker-compose）"><a href="#Docker-Compose相关指令（使用docker-compose）" class="headerlink" title="Docker Compose相关指令（使用docker-compose）"></a>Docker Compose相关指令（使用<code>docker-compose</code>）</h3><ul>
-<li><code>docker-compose up</code>：在后台启动并运行整个应用。</li>
-<li><code>docker-compose down</code>：停止并移除容器，网络，图像和挂载卷。</li>
-<li><code>docker-compose build</code>：构建或重建服务关联的镜像。</li>
-<li><code>docker-compose logs</code>：查看服务的日志输出。</li>
-</ul>
-<p>这些命令代表了Docker操作的基础，但是实际使用中可能还会遇到更复杂的场景和高级特性。建议通过官方文档或其他学习资源深入理解每个命令的用法和选项。</p>
-<h3 id="通过-DockerFile-构建-Docker-Image"><a href="#通过-DockerFile-构建-Docker-Image" class="headerlink" title="通过 DockerFile 构建 Docker Image"></a>通过 DockerFile 构建 Docker Image</h3><p>一个 Image 是通过一个 DockerFile 定义的，然后使用 docker build 命令构建它。</p>
-<p>DockerFile 中的每一条命令的执行结果都会成为 Image 中的一个 Layer。</p>
-<p>这里，我们通过 Build 一个镜像，来观察 Image 的分层机制：</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用官方的Python运行时环境作为基础镜像</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">2.7</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作目录为容器内的/app。如果目录不存在，Docker会自动为你创建这个目录。</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将当前目录（Dockerfile所在目录）的内容复制到容器内的/app目录中。</span></span><br><span class="line"><span class="comment"># 这意味着你的应用代码和依赖文件（比如requirements.txt）都会被复制进去。</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 利用RUN命令执行pip安装命令来安装requirements.txt中列出的所有依赖。</span></span><br><span class="line"><span class="comment"># 这里使用了--trusted-host选项来指定可信的PyPI主机，避免SSL证书验证问题。</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install --trusted-host pypi.python.org -r requirements.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用EXPOSE指令来告诉Docker容器内的应用将会在80端口上监听连接。</span></span><br><span class="line"><span class="comment"># 需要注意的是，EXPOSE指令本身不会使容器的端口对外界开放，</span></span><br><span class="line"><span class="comment"># 它更多的是一种文档化的作用，真正的端口映射需要在运行容器时通过docker run的-p选项来指定。</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用ENV指令设置一个环境变量。这里定义了一个名为NAME的环境变量，值为World。</span></span><br><span class="line"><span class="comment"># 环境变量可以在容器运行时被应用程序读取，用于配置应用行为。</span></span><br><span class="line"><span class="keyword">ENV</span> NAME World</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用CMD指令指定容器启动时运行的命令。</span></span><br><span class="line"><span class="comment"># 这里的命令是“python app.py”，即使用Python解释器来运行app.py脚本。</span></span><br><span class="line"><span class="comment"># CMD的主要作用是指定容器的默认执行命令。如果在docker run命令后面指定了其他命令，CMD指定的命令将被覆盖。</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;python&quot;</span>, <span class="string">&quot;app.py&quot;</span>]</span></span><br></pre></td></tr></table></figure>
+<h2 id="0起因"><a href="#0起因" class="headerlink" title="0起因"></a>0起因</h2><p>最近，在刷题的过程中思考如何把代码的向量命名规范化，进一步的希望规范化完整的代码功能和设计模式。</p>
+<p>以 leetcode第3题：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-substring-without-repeating-characters/">https://leetcode.cn/problems/longest-substring-without-repeating-characters/</a>为例。</p>
+<p>正常代码为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lengthOfLongestSubstring</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        char_index = &#123;&#125;  <span class="comment"># Maps character to its last position</span></span><br><span class="line">        max_length = <span class="number">0</span></span><br><span class="line">        start = <span class="number">0</span>  <span class="comment"># Start of current substring</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="comment"># If character is already in the current substring, update start position</span></span><br><span class="line">            <span class="keyword">if</span> s[i] <span class="keyword">in</span> char_index <span class="keyword">and</span> char_index[s[i]] &gt;= start:</span><br><span class="line">                start = char_index[s[i]] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># Update max_length if current substring is longer</span></span><br><span class="line">                max_length = <span class="built_in">max</span>(max_length, i - start + <span class="number">1</span>)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># Update last position of character</span></span><br><span class="line">            char_index[s[i]] = i</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> max_length</span><br></pre></td></tr></table></figure>
 
-<p>这份<code>Dockerfile</code>基本上覆盖了构建一个简单Python应用的Docker镜像所需的所有步骤。从选择基础镜像开始，设置工作目录，复制应用代码，安装依赖，到最后指定运行时的命令和暴露的端口，每一步都为镜像的构建提供了必要的指令和配置。</p>
-<p>最终的构建结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@rds-k8s-18-svr0:~/xuran/exampleimage# docker build -t hello ./</span><br><span class="line">Sending build context to Docker daemon  5.12 kB</span><br><span class="line">Step 1/7 : FROM python:2.7-slim</span><br><span class="line"> ---&gt; 804b0a01ea83</span><br><span class="line">Step 2/7 : WORKDIR /app</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 6d93c5b91703</span><br><span class="line">Step 3/7 : COPY . /app</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; feddc82d321b</span><br><span class="line">Step 4/7 : RUN pip install --trusted-host pypi.python.org -r requirements.txt</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 94695df5e14d</span><br><span class="line">Step 5/7 : EXPOSE 81</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 43c392d51dff</span><br><span class="line">Step 6/7 : ENV NAME World</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; 78c9a60237c8</span><br><span class="line">Step 7/7 : CMD python app.py</span><br><span class="line"> ---&gt; Using cache</span><br><span class="line"> ---&gt; a5ccd4e1b15d</span><br><span class="line">Successfully built a5ccd4e1b15d</span><br></pre></td></tr></table></figure>
+<p>这是通常的LeetCode格式，没有问题。</p>
+<p>但是，如果想定义一个构造函数<code>__init__</code>初始化向量那应该怎么做呢？</p>
+<p>于是，按照逻辑和想法写了一下。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.lst = &#123;&#125;</span><br><span class="line">        self.longest_substr = <span class="number">0</span></span><br><span class="line">        self.start = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">lengthOfLongestSubstring</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(s)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            <span class="keyword">if</span> s[i] <span class="keyword">in</span> self.lst <span class="keyword">and</span> self.lst[s[i]] &gt;= self.start:</span><br><span class="line">                self.start = self.lst[s[i]] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.longest_substr = <span class="built_in">max</span>(self.longest_substr, i - self.start + <span class="number">1</span>)</span><br><span class="line">            self.lst[s[i]] = i</span><br><span class="line">        <span class="keyword">return</span> self.longest_substr</span><br><span class="line">        </span><br></pre></td></tr></table></figure>
 
-<p>下面是对这些信息每一步的详细解释：</p>
+<p>写完之后，诞生一个新的问题：能不能把 <code>n</code> 这个长度向量也放在初始化中呢？</p>
+<p>答案是不行，更应该说是“不规范”。</p>
+<h2 id="1以下类型的变量放在-init"><a href="#1以下类型的变量放在-init" class="headerlink" title="1以下类型的变量放在__init__"></a>1以下类型的变量放在<code>__init__</code></h2><p><code>__init__</code> 方法（构造函数）用于初始化一个类的<em>实例</em>的状态。</p>
+<p>因此，你应该把以下类型的变量放在 <code>__init__</code> 中：</p>
+<ol>
+<li><p><strong>属于对象本身的属性 (Attributes that belong to the object itself):</strong></p>
 <ul>
-<li><p><strong>Sending build context to Docker daemon 5.12 kB</strong><br>这一行表示Docker客户端正在将构建上下文发送给Docker守护进程。构建上下文是指Dockerfile所在目录的内容，Docker会将这些内容打包发送给守护进程。这里的大小是5.12kB，表示你的应用代码和依赖文件等总共大小。</p>
+<li><p>这些变量描述了对象的特征或状态，并且在对象的整个生命周期内都可能被使用。</p>
 </li>
-<li><p><strong>Step 1&#x2F;7 : FROM python:2.7-slim</strong><br>这是Dockerfile中的第一步，它基于<code>python:2.7-slim</code>这个镜像来构建新的镜像。<code>---&gt; 804b0a01ea83</code>是基础镜像的ID。</p>
+<li><p>它们对于每个对象实例来说可能是不同的。</p>
 </li>
-<li><p><strong>Step 2&#x2F;7 : WORKDIR &#x2F;app</strong><br>设置工作目录为<code>/app</code>。如果不存在，Docker会自动创建这个目录。<code>---&gt; Using cache ---&gt; 6d93c5b91703</code>表示这一步使用了缓存，<code>6d93c5b91703</code>是这一层的ID。</p>
-</li>
-<li><p><strong>Step 3&#x2F;7 : COPY . &#x2F;app</strong><br>将构建上下文（Dockerfile所在的目录）的内容复制到容器内的<code>/app</code>目录。<code>---&gt; Using cache ---&gt; feddc82d321b</code>表明这一步也使用了缓存。</p>
-</li>
-<li><p><strong>Step 4&#x2F;7 : RUN pip install –trusted-host pypi.python.org -r requirements.txt</strong><br>在容器内执行<code>pip install</code>命令，安装<code>requirements.txt</code>文件中列出的Python依赖包。<code>---&gt; Using cache ---&gt; 94695df5e14d</code>说明这一步同样使用了缓存。</p>
-</li>
-<li><p><strong>Step 5&#x2F;7 : EXPOSE 81</strong><br>通知Docker容器在运行时将会监听81端口。注意这里与前面提到的Dockerfile中的<code>EXPOSE 80</code>不同，可能是因为Dockerfile被修改了但构建输出没有更新。<code>---&gt; Using cache ---&gt; 43c392d51dff</code>表示使用了缓存。</p>
-</li>
-<li><p><strong>Step 6&#x2F;7 : ENV NAME World</strong><br>设置环境变量<code>NAME</code>的值为<code>World</code>。这个环境变量可以在容器运行时被应用程序使用。<code>---&gt; Using cache ---&gt; 78c9a60237c8</code>也显示这一步使用了缓存。</p>
-</li>
-<li><p><strong>Step 7&#x2F;7 : CMD [“python”, “app.py”]</strong><br>指定容器启动时默认执行的命令。这里是运行<code>app.py</code>脚本。<code>---&gt; Using cache ---&gt; a5ccd4e1b15d</code>意味着这一步也利用了之前的构建缓存。</p>
-</li>
-<li><p><strong>Successfully built a5ccd4e1b15d</strong><br>最后，显示了成功构建的镜像ID为<code>a5ccd4e1b15d</code>。</p>
-</li>
+<li><p>例子：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, breed, age</span>):</span><br><span class="line">        self.name = name  <span class="comment"># 属于狗的名字</span></span><br><span class="line">        self.breed = breed <span class="comment"># 属于狗的品种</span></span><br><span class="line">        self.age = age    <span class="comment"># 属于狗的年龄</span></span><br><span class="line"></span><br><span class="line">my_dog = Dog(<span class="string">&quot;Buddy&quot;</span>, <span class="string">&quot;Golden Retriever&quot;</span>, <span class="number">3</span>)</span><br><span class="line">your_dog = Dog(<span class="string">&quot;Lucy&quot;</span>, <span class="string">&quot;Labrador&quot;</span>, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># my_dog 和 your_dog 有不同的 name, breed, age</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>在这个过程中，<code>Using cache</code>表明Docker发现之前的构建步骤与当前的完全一致，因此它复用了之前的结果来加快构建过程。如果你想要强制Docker重新执行每个步骤而不使用缓存，可以在构建时添加<code>--no-cache</code>选项。</p>
-<hr>
-<p>参考链接：</p>
+</li>
+<li><p><strong>对象创建时必须提供的参数 (Parameters required when creating the object):</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.docker.com/101-tutorial/">Docker 101 Tutorial</a></li>
-<li><a target="_blank" rel="noopener" href="http://t.csdnimg.cn/cApYV">Docker原理（图解+秒懂+史上最全）</a></li>
+<li>这些参数是创建对象时不可或缺的，用于设置对象的初始状态。</li>
+<li>它们通常被用来初始化对象的属性。</li>
+<li>例子（和上面一样）：<code>name</code>, <code>breed</code>, <code>age</code> 是创建 <code>Dog</code> 对象时必须提供的。</li>
 </ul>
+</li>
+<li><p><strong>对象内部使用的，但不需要外部直接访问的变量 (Variables used internally by the object, but not directly accessed externally):</strong></p>
+<ul>
+<li><p>这些变量通常用于存储对象的内部状态，或者作为对象方法的辅助变量。</p>
+</li>
+<li><p>它们通常以下划线 <code>_</code> 开头（例如 <code>self._internal_counter</code>），这是一种约定，表示它们是“私有的”或“受保护的”，不建议从对象外部直接访问。</p>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, radius</span>):</span><br><span class="line">        self.radius = radius</span><br><span class="line">        self._area = <span class="number">3.14159</span> * radius * radius  <span class="comment"># 内部计算的面积，不直接暴露</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">get_area</span>(<span class="params">self</span>):  <span class="comment"># 提供一个方法来获取面积</span></span><br><span class="line">        <span class="keyword">return</span> self._area</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>与对象关联的其他对象 (Other objects associated with the object):</strong></p>
+<ul>
+<li><p>如果一个对象需要与其他对象协作，那么这些其他对象的引用可以作为属性存储在 <code>__init__</code> 中。  这体现了对象之间的“has-a”关系（组合或聚合）。</p>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Engine</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, horsepower</span>):</span><br><span class="line">        self.horsepower = horsepower</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, make, model, engine</span>):</span><br><span class="line">        self.make = make</span><br><span class="line">        self.model = model</span><br><span class="line">        self.engine = engine  <span class="comment"># Car &quot;has-a&quot; Engine</span></span><br><span class="line"></span><br><span class="line">my_engine = Engine(<span class="number">200</span>)</span><br><span class="line">my_car = Car(<span class="string">&quot;Toyota&quot;</span>, <span class="string">&quot;Camry&quot;</span>, my_engine)</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>默认值属性 (Attributes with default values):</strong></p>
+<ul>
+<li><p>如果某些属性在对象创建时可以不提供，你可以给它们设置默认值。</p>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, width, height=<span class="number">1</span></span>):  <span class="comment"># height 有默认值 1</span></span><br><span class="line">        self.width = width</span><br><span class="line">        self.height = height</span><br><span class="line"></span><br><span class="line">rect1 = Rectangle(<span class="number">5</span>)     <span class="comment"># height 使用默认值 1</span></span><br><span class="line">rect2 = Rectangle(<span class="number">5</span>, <span class="number">10</span>)  <span class="comment"># height 被指定为 10</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p><strong>不应该放在 <code>__init__</code> 中的变量:</strong></p>
+<ul>
+<li><p><strong>局部变量 (Local variables):</strong> 只在某个方法内部使用的临时变量，不属于对象的状态，应该在方法内部定义。</p>
+</li>
+<li><p><strong>与特定方法调用相关的变量 (Variables related to a specific method call):</strong>  例如，<code>lengthOfLongestSubstring</code> 方法中的 <code>n</code>，它是输入字符串 <code>s</code> 的长度，与对象本身的状态无关，应该在方法内部计算。</p>
+</li>
+<li><p><strong>类级别的变量 (Class-level variables):</strong>  这些变量属于类本身，而不是类的实例。它们应该在类定义中直接定义，而不是在 <code>__init__</code> 中。  类变量在所有实例之间共享。</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>:</span><br><span class="line">    class_variable = <span class="number">0</span>  <span class="comment"># 类变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, instance_variable</span>):</span><br><span class="line">        self.instance_variable = instance_variable  <span class="comment"># 实例变量</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2总结"><a href="#2总结" class="headerlink" title="2总结"></a>2总结</h2><p><code>__init__</code> 的目的是初始化<em>对象</em>的状态。</p>
+<p>变量是否应该放在 <code>__init__</code> 中，取决于它是否是对象持久状态的一部分，或者是否在对象创建时必须提供。</p>
+<p>清晰地区分对象的属性（放在 <code>__init__</code> 中）和方法的局部变量（放在方法内部）对于编写清晰、可维护的代码至关重要。</p>
+<p>在LeetCode第三题中，<code>n</code>与特定的调用方法相关而且与对象本身状态无关，应该在方法内部计算。</p>
 
       
     </div>
@@ -464,7 +451,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://zade23.github.io/2023/11/07/%E7%8E%A9%E8%BD%ACDocker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="玩转Docker学习笔记" target="_blank" rel="external">https://zade23.github.io/2023/11/07/玩转Docker学习笔记/</a>
+      <a href="https://zade23.github.io/2025/03/06/%E3%80%90Python%E3%80%91%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%BA%94%E8%AF%A5%E6%94%BE%E5%9C%A8-init-%E6%96%B9%E6%B3%95-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-%E4%B8%AD/" title="【Python】哪些类型的变量应该放在__init__方法(构造函数)中" target="_blank" rel="external">https://zade23.github.io/2025/03/06/【Python】哪些类型的变量应该放在-init-方法-构造函数-中/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -510,13 +497,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2023/11/22/conda%E7%8E%AF%E5%A2%83%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%EF%BC%9Ainvalid-choice-activate/" title="conda环境报错解决：invalid choice: &#39;activate&#39; "><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2023/10/31/pytorch-tutorial-official/" title="pytorch-tutorial-official"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2025/01/16/%E3%80%90%E5%B7%A5%E5%85%B7%E3%80%91%E4%B8%AA%E4%BA%BA%E5%90%91SSH%E5%B7%A5%E5%85%B7%E5%8F%8A%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" title="【工具】个人向SSH工具及相关设置"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
