@@ -6,7 +6,7 @@
   <link href="https://zade23.github.io/atom.xml" rel="self"/>
   
   <link href="https://zade23.github.io/"/>
-  <updated>2025-05-21T06:59:26.578Z</updated>
+  <updated>2025-07-02T07:04:39.731Z</updated>
   <id>https://zade23.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【图形学】Blender法线贴图渲染并在Unity引擎中查看</title>
+    <link href="https://zade23.github.io/2025/07/02/%E3%80%90%E5%9B%BE%E5%BD%A2%E5%AD%A6%E3%80%91Blender%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE%E6%B8%B2%E6%9F%93%E5%B9%B6%E5%9C%A8Unity%E5%BC%95%E6%93%8E%E4%B8%AD%E6%9F%A5%E7%9C%8B/"/>
+    <id>https://zade23.github.io/2025/07/02/%E3%80%90%E5%9B%BE%E5%BD%A2%E5%AD%A6%E3%80%91Blender%E6%B3%95%E7%BA%BF%E8%B4%B4%E5%9B%BE%E6%B8%B2%E6%9F%93%E5%B9%B6%E5%9C%A8Unity%E5%BC%95%E6%93%8E%E4%B8%AD%E6%9F%A5%E7%9C%8B/</id>
+    <published>2025-07-02T07:02:50.000Z</published>
+    <updated>2025-07-02T07:04:39.731Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="【图形学】Blender渲染法线贴图"><a href="#【图形学】Blender渲染法线贴图" class="headerlink" title="【图形学】Blender渲染法线贴图"></a>【图形学】Blender渲染法线贴图</h1><h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202507021456144.png" alt="1"></p><h2 id="完整流程"><a href="#完整流程" class="headerlink" title="完整流程"></a>完整流程</h2><ol><li><p>打开Blender，不要删除相机📷，导入模型。</p></li><li><p>选择相机角度用来确定最终输出的视图。从右上角视图上可以直接切换（俯视图，正视图等）。</p></li><li><p>确定视图后。点击 Layout → view → Align View → Align Activate Camera to View</p><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202507021457121.png" alt="2"></p></li><li><p>相机参数设置。选中相机 → 相机设置为“正交模式” → 正交比例设置为2.000</p><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202507021458493.png" alt="3"></p></li><li><p>设置输出分辨率。X和Y分别选择你需要输出的分辨率，一般情况下和贴图尺寸对齐即可。</p><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202507021459825.png" alt="4"></p></li><li><p>渲染引擎render选择。渲染引擎切换为“工作台”模式；“颜色管理→查看变换改为“标准”；“光照” → “快照材质” → 选择法线</p><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202507021459852.png" alt="5"></p></li><li><p>查看渲染效果。点击“Render” → “Render Image”，也可以使用快捷键F12</p></li><li><p>保存导出。“Image → “Save“，或使用快捷键 Alt+S</p><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202507021500874.png" alt="6"></p></li></ol><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul><li><a href="https://www.bilibili.com/video/BV1Bg4y1B7J2/?vd_source=31e773b345b9901b4c2886ef721c500e">https://www.bilibili.com/video/BV1Bg4y1B7J2/?vd_source=31e773b345b9901b4c2886ef721c500e</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;【图形学】Blender渲染法线贴图&quot;&gt;&lt;a href=&quot;#【图形学】Blender渲染法线贴图&quot; class=&quot;headerlink&quot; title=&quot;【图形学】Blender渲染法线贴图&quot;&gt;&lt;/a&gt;【图形学】Blender渲染法线贴图&lt;/h1&gt;&lt;h2 id=&quot;流</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>【Git】服务器创建SSH私钥拉取Gitlab代码</title>
@@ -438,30 +458,6 @@
     
     
     <category term="Python" scheme="https://zade23.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LLaMA-Factory原理与底层实现</title>
-    <link href="https://zade23.github.io/2024/03/19/LLaMA-Factory%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/"/>
-    <id>https://zade23.github.io/2024/03/19/LLaMA-Factory%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/</id>
-    <published>2024-03-19T02:53:47.000Z</published>
-    <updated>2024-03-20T13:30:21.869Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="LLaMA-Factory的简要介绍"><a href="#LLaMA-Factory的简要介绍" class="headerlink" title="LLaMA-Factory的简要介绍"></a>LLaMA-Factory的简要介绍</h2><p>简化大模型训练的工具</p><p>从 Pre-train → SFT（监督微调，supervised fine-tuning）→ RLHF（基于人类反馈的强化学习，reinforcement learning human feedback），一步完成。</p><p>一张4090完成70B参数的模型微调。</p><p>效率：</p><p>算子上提高两倍提速和60%的缓存节省。</p><p>一键完成。</p><p>通过分布式框架，甚至可以实现最多180B的框架模型微调。</p><p>目前已经有数十篇ArXiv论文使用了LLaMA-Factory工具作为微调框架。</p><h2 id="为什么要使用LLaMA-Factory"><a href="#为什么要使用LLaMA-Factory" class="headerlink" title="为什么要使用LLaMA-Factory"></a>为什么要使用LLaMA-Factory</h2><ol><li>如果从头训练一个llama2,模型，从LLaMA论文来看，仅7B参数就需要184320GPU小时，是非常遥不可及的时长。</li><li>报错难追踪，因为训练的报错常常是CUDA层面的bug，非常不方便定位。</li></ol><p>GaLora微调技术，关于一种全参数的高效训练方法</p><p>QLora微调技术，一种Lora训练的量化版本。举例来说，在7B模型下使用2bite的量化微调QLora方法，可以有效的降低到仅仅需要4GB的显存占用。</p><p>Lora是在网络的旁边增加一个旁路，将d维度的高秩表征映射到r维的低秩表征，最后再从r维重新映射回d维。由于完整的微调工作是在缩小后的r维上进行的，这样就使得完整的训练中需要修改的参数量大幅度的降低（只用到0.01%的参数，显存占用量减少3倍）。Lora用多了还是有一个明显的缺陷，即对很多任务的拟合依然不是很好。</p><p>但是GaLora会是更好的微调方法，因为它具备了全参数微调的能力。</p><h2 id="LLaMA-Factory的结构分层"><a href="#LLaMA-Factory的结构分层" class="headerlink" title="LLaMA-Factory的结构分层"></a>LLaMA-Factory的结构分层</h2><p>从最底层开始介绍：</p><p>底层加速层：已适配的硬件有英伟达、华为、海光</p><p>软件层和计算架构层：以PyTorch和Hugging Face 为主。DeepSpeed作为分布式多卡加速训练的方案（使用了一种数据并行的方案，平均分配所有参数到多卡环境中），在工程架构实现以后，未来将支持更多的框架。</p><p>大模型和数据层：更高层的抽象，比如Flash Attention RoPE Scaling，以及数据上的集成，比如动态集成数据</p><p>高效训练层：预训练&#x2F;继续训练 + 监督微调 + PPO算法</p><h2 id="如何优化每一步的加速过程"><a href="#如何优化每一步的加速过程" class="headerlink" title="如何优化每一步的加速过程"></a>如何优化每一步的加速过程</h2><p>简单回顾一下大模型的训练方式，首先是InstructGPT论文，它使用到的训练方法和GPT是一样，称之为<strong>三阶段训练方法</strong>：</p><p>三个阶段可以分为<strong>问答阶段、模型奖励阶段、强化学习训练</strong>：</p><ol><li>问答阶段：利用人类标记好的数据，进行指令的微调工作。在这一阶段，模型就初具了能够<strong>听懂人类指令</strong>和<strong>完成对话</strong>的基本功能。它存在的弊端是，当下的模型依然含有有害内容，而且相对输出的内容过短。</li><li>设计模型奖励阶段：这一步主要任务就是收集数据，构造一个已标注过的文本对比数据集。建立一个奖励模型（RM，reward model），该奖励模型可以对每一个给定的问题和这个问题的答案输出一个标量的分数。</li><li>强化学习：通过这个得到的标量分数，通过PPO算法去微调问答阶段得到的微调模型（偏好对齐）。</li></ol><p>通过以上三步，加上LLaMA-Factory的一些技术，使得这一套训练工作流比原始训练更加高效。</p><h3 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h3><p>在开始将解SFT之前，首先讲解一下预训练。</p><p>预训练是模型训练过程中必要的一个阶段，在有大量无标注的语料情况下，我们希望可以先不进行标注。通过大量的无标注数据的预训练方法，使得模型在我们相关领域的数据上表现的更好(思考为什么？)。</p><p>这里我们使用类似GPT3的<strong>自回归模型（auto-regressive language model）</strong>，根据前i-1个tokens来预测第i个token的能力。</p><p>在持续训练的过程中，使用传统的因果建模的方式，通过计算交叉熵损失的方式来最小化下面这个对数似然的损失来实现模型的优化。<br>$$<br>\mathcal{L}_ {\mathrm{CLM}}&#x3D;-\frac{1}{n} \sum_ {i&#x3D;1}^{n} \log P\left(x_ {i} \mid x_ {1}, x_ {2}, \ldots, x_ {i-1} ; \theta\right)<br>$$<br>它的优势是：通过无监督的方式来完成一系列优化。</p><h2 id="预训练阶段的语料处理"><a href="#预训练阶段的语料处理" class="headerlink" title="预训练阶段的语料处理"></a>预训练阶段的语料处理</h2><p>这里，处理这种预训练阶段的数据最高效的方法有两种，分别是序列打包方法（sequence packing）和数据的流式加载的（data streaming），下面对二者分别进行介绍。</p><h3 id="序列打包方法"><a href="#序列打包方法" class="headerlink" title="序列打包方法"></a>序列打包方法</h3><p>将不同长度的序列打包在一起，省去padding的过程。如图中的过程，左侧的序列是没有打包过的序列，右边序列是打包过的序列。如果我们假设 batch_size &#x3D; 1，则处理左边的序列需要4次；处理右边的序列只需要3次。</p><blockquote><p>问：打包在一起的语料之间有干扰怎么办？</p><p>答：会有干扰，但是影响极小，带来的训练效率提升却是显著的。</p></blockquote><p>通常情况下，默认会使用 sequence packing 的方法处理序列数据。</p><h3 id="数据的流式加载"><a href="#数据的流式加载" class="headerlink" title="数据的流式加载"></a>数据的流式加载</h3><p>下面的这一种数据流式加载技术，主要是为了极大的洁身CPU的内存。通常，我们预期的阶段需要用到几百GB的内存，在使用了数据的流式加载技术后可以节省巨大的内存占用，同时可以避免在分布式训练上造成超时的问题。</p><h2 id="监督微调"><a href="#监督微调" class="headerlink" title="监督微调"></a>监督微调</h2><p>在经历了一系列优化工作后，监督微调（SFT，Supervised Fine-Tuning）通过<strong>问答对</strong>的形式进行一个 sequence to sequence 的学习。</p><p>这一阶段的方法和预训练阶段的损失是一样的，采用交叉熵损失。<br>$$<br>\mathcal{L}_ {\mathrm{SFT}}&#x3D;-\frac{1}{n} \sum_ {i&#x3D;1}^{n} \log P\left(y_{i} \mid x_ {1}, x_ {2}, \ldots, x_ {m} ,y_ {1}, y_ {2}, \ldots, y_ {i-1} ; \theta\right)<br>$$<br>在公式中，x代表问答对中的问题，y代表问答对中的回复。在计算损失的过程中，只计算y上面的损失，对于x一般是不计算损失的。</p><p>在LLaMA-Factory中，主要就是针对这个多轮对话的数据集去优化sft的loss计算方式。</p><p>在多轮对话数据集中，只要计算一次前向传播。</p><p>在模型输出的损失函数计算中，将终止标签<code>eos</code>标注添加到标准输出中，这样可以帮助模型学习到在什么位置进行停止。提高5%到10%的运算效率。</p><h3 id="奖励模型"><a href="#奖励模型" class="headerlink" title="奖励模型"></a>奖励模型</h3><p>奖励模型使用 pairwise ranking loss 来计算损失：<br>$$<br>\mathcal{L}_ {\mathrm{RM}}&#x3D;-\sum_ {(x,y^c,y^r)}\log\left(\sigma(r_ \theta(x,y^c)-r_ \theta(x,y^r))\right)<br>$$<br>其中，yc代表了更好的回复，yr代表了更差的回复，r就是对答案的打分。这个函数希望对好回答的打分高于差回答的打分。</p><p>在训练过程中，会将所有的r1、r2、r3的分数一起作为参考求平均值。</p><p>在推理过程中，只会参考r3的分数最为推理时候的分数。</p><p>思考一个问题：为什么训练的过程中需要将句子中每一个token进行采取然后做分数计算，而不能只计算最后一个token的分数？</p><p>答案是：这样会使得模型过拟合。</p><p>以上是对奖励模型学习过程中的优化过程：针对最后一个输出token进行打分，用于评估奖励模型效果。</p><h2 id="强化学习（PPO学习）"><a href="#强化学习（PPO学习）" class="headerlink" title="强化学习（PPO学习）"></a>强化学习（PPO学习）</h2><p>PPO学习参考一个多臂老虎机问题（bandit problem）。在大模型的过程中，会对一个Prompt产生一条随机的回复，然后奖励这个模型，并对生成的回复进行打分。PPO模型就是为了希望最大化的奖励这个模型给出的分数。</p><p>除了奖励以外，还会对当前这个模型进行<strong>KL惩罚</strong>以防止PPO对模型的过度优化现象。<br>$$<br>\mathcal{J}(\phi)&#x3D;\mathbb{E}_ {(\mathrm{x},\mathrm{y})\sim\mathcal{D}_ {\pi_\phi^{\mathrm{PPO}}}}\left[r_ \theta(x,y)-\beta\log\frac{\pi_\phi^{\mathrm{PPO}}(y|x)}{\pi^{\mathrm{SFT}}(y|x)}\right]<br>$$<br>在上面损失函数中，log后分子上的数学建模是PPO模型，分母上的建模是SFT模型。</p><p>因此，可以看到，如果想要进行PPO模型的训练，就需要加载三个模型。如果只有一张显卡，就很难把三个模型都运行起来。</p><h3 id="模型权重共享的方法"><a href="#模型权重共享的方法" class="headerlink" title="模型权重共享的方法"></a>模型权重共享的方法</h3><p>在三个模型中，参数的大头在backbone部分，这部分的参数和空间占了整个模型空间的98%左右。如果多次读取模型，最冗余的状态就是backbone的重复加载和卸载。</p><p>这里我们引入LoRA适配器的方法，共享backbone部分参数，在训练过程中动态加载LoRA和adapter模块。</p><p>PPO算法拥有一些强化学习的通病，就是难收敛。这里可以推荐一个替代的强化学习算法DPO，公式上的差别较小：<br>$$<br>\mathcal{L}_ {\mathrm{DPO}}&#x3D;-\sum_ {(x,y^c,y^{\prime})\sim\mathcal{D}}\left[\log\sigma\left(\beta\log\frac{\pi^{\mathrm{DPO}}(y^c|x)}{\pi^{\mathrm{SFT}}(y^c|x)}-\beta\log\frac{\pi^{\mathrm{DPO}}(y^r|x)}{\pi^{\mathrm{SFT}}(y^r|x)}\right)\right]<br>$$</p><h3 id="LLaMA-Factory在应用上的优化"><a href="#LLaMA-Factory在应用上的优化" class="headerlink" title="LLaMA-Factory在应用上的优化"></a>LLaMA-Factory在应用上的优化</h3><p>在强化学习的两个算法中，DPO收敛更快，但是更容易过拟合；PPO效果好，但是不容易收敛&#x2F;收敛慢。</p><p>在LLaMA-Factory上提出了混合微调梯度的方法。</p><p>将sft损失乘一个损失因子γ后，将整体值加到DPO中。由于它是一个常数项，所以并不会增加梯度计算的负担</p><h3 id="实现工具调用训练"><a href="#实现工具调用训练" class="headerlink" title="实现工具调用训练"></a>实现工具调用训练</h3><p>使得大模型具有调用外部工具的能力（LangChain）。</p><p>如果咨询大模型：当前时刻某个酒店有多少客房</p><p>如果直接让大模型回答相关问题，大模型既不知道最新的知识，也不清楚没见过的专有名词（酒店的名称）。</p><p>而通过LangChain等方法，就可以将整个工具链上附带工具化调用的能力，其实就是格式化大模型输出的能力。将模型的输出格式，变成可以随着工具进行传参的格式。</p><p>在原有论文的基础上，将传入参数的格式变成json格式传入，这样就可以学习到一些嵌套结构例如列表等多参数的传递。</p><p>工具链的学习过程没有特别多的技巧，就是一个多轮对话的sft学习，重要的是对标准的传递格式的学习。</p><h3 id="使用Flash-Attention加速优化"><a href="#使用Flash-Attention加速优化" class="headerlink" title="使用Flash Attention加速优化"></a>使用Flash Attention加速优化</h3><p>一种计算上无损的加速方式，推理速度提升<strong>2~3</strong>倍，主要在硬件层实现，其原理是提升了I&#x2F;O的执行效率。</p><p>它的替身效率随上下文长度的提升而显著的提升。</p><h3 id="模型量化"><a href="#模型量化" class="headerlink" title="模型量化"></a>模型量化</h3><p>GPTQ的方式可以将模型的权重量化到4bit的程度</p><h3 id="位置编码"><a href="#位置编码" class="headerlink" title="位置编码"></a>位置编码</h3><p>困惑度是指将模型的输入扩充超过最长tokens的限制，那么模型对于输入几乎会丧失所有的推理能力。</p><p>位置编码可以将长序列的困惑度大幅度降低。</p><p>这里介绍两种插值方法：线性差值（Linear Scaling）和 NTK-aware 差值。</p><h3 id="损失函数的优化"><a href="#损失函数的优化" class="headerlink" title="损失函数的优化"></a>损失函数的优化</h3><p>在LoRA自身的反向传播过程中，PyTorch的反向传播实现得不够好。</p><p>例如，对下面A计算梯度，它是一个m×d维的矩阵，乘m×h维的矩阵，乘h×r维的矩阵。</p><p>在PyTorch中，它会先将大矩阵相乘，然后再去乘小矩阵。</p><p>而如果先将两个较小的矩阵进行相乘，最后再乘较大的矩阵，计算量是大幅度缩小的。（矩阵的乘法交换律）</p><p>那么，通过替换原有的PyTorch中的的梯度计算方法，可以大幅度减少需要计算的浮点运算数量。</p><h3 id="计算稳定性上的优化"><a href="#计算稳定性上的优化" class="headerlink" title="计算稳定性上的优化"></a>计算稳定性上的优化</h3><p>fp16精度下的训练有不稳定的情况，bf16相比前者更加稳定。但是由于精度上的差异，导致二者在训练和运行推理时的兼容性上有一定的问题。</p><ul><li>bf16精度训练的模型，可以运行在fp16精度的环境下</li><li>fp16精度训练的模型，不可以运行在bf16精度的环境下</li></ul><p>如果在LLaMA-Factory的环境上强制运行后者，将会得到一个warning警告。</p><h3 id="更好的工具调用和总结能力"><a href="#更好的工具调用和总结能力" class="headerlink" title="更好的工具调用和总结能力"></a>更好的工具调用和总结能力</h3><p>实例展示了通过相应的数据集在LLaMA-Factory上进行训练后，模型不仅可以正确的理解输入的工具调用指令，还能生成正确对应格式的结果。</p><h3 id="Trick"><a href="#Trick" class="headerlink" title="Trick"></a>Trick</h3><p>继续预训练(continue pre-training)相关</p><ul><li>继续预训练最好在base模型上进行（不要用chat版）</li><li>Scaling law 是非常必要的</li><li>参考前人最常用的超参数设置可以事半功倍</li><li>需要竟可能大数量级的tokens去继续训练过程</li><li>多阶段训练可能会提高模型的能力</li><li>词表扩充有可能害了训练结果（除非你需要换小语种）</li></ul><p>监督微调（SFT）相关</p><ul><li>数据质量很重要（合理使用GPT-4去标注知识）</li><li>数据集非常小（只有几百条），最好直接使用chat模型做微调并且保持和数据集模板的对齐</li><li>为了保证微调过程中那个，模型原有的能力不会损失太明显，还是需要再微调的过程中加上一些通用领域的知识。</li><li>Qlora有时币Lora效果更好（更大幅度的降低参数，带来了更稳定的模型）</li><li>（一般植入新知识的过程都在继续预训练的过程中进行）如果一定要在监督微调的过程中植入新知识，那么就需要加入“同意不同文(或不同格式)”的几十条数据。例如：在监督微调部分修改模型的自我认知，就需要几百条数据来完成一项知识的植入。</li><li>超参数没有最好的，只有实践才知道（实践出真知）</li></ul><h2 id="答疑"><a href="#答疑" class="headerlink" title="答疑"></a>答疑</h2><p>问：Flash Attention没法在V100上用，有什么好的办法？</p><p>答：在PyTorch2.0之后，已经实现了替代了FlashAttention的轮子。</p><p>问：超参数设置怎么来？</p><p>答：参考别的论文。</p><p>问：针对不同的response做优化，答案长度不同的情况下，如何做归一化呢？</p><p>答：不同长度的情况下，会使用tokens填充的方法，将较少tokens的向量做padding，最终补齐长度和较长的tokens一致。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;LLaMA-Factory的简要介绍&quot;&gt;&lt;a href=&quot;#LLaMA-Factory的简要介绍&quot; class=&quot;headerlink&quot; title=&quot;LLaMA-Factory的简要介绍&quot;&gt;&lt;/a&gt;LLaMA-Factory的简要介绍&lt;/h2&gt;&lt;p&gt;简化大模型训</summary>
-      
-    
-    
-    
-    <category term="LLM" scheme="https://zade23.github.io/categories/LLM/"/>
-    
-    
-    <category term="Training" scheme="https://zade23.github.io/tags/Training/"/>
     
   </entry>
   
