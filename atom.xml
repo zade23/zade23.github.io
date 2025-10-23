@@ -6,7 +6,7 @@
   <link href="https://zade23.github.io/atom.xml" rel="self"/>
   
   <link href="https://zade23.github.io/"/>
-  <updated>2025-07-02T07:04:39.731Z</updated>
+  <updated>2025-10-23T10:17:57.804Z</updated>
   <id>https://zade23.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Git】开发ComfyUI自定义节点连通Comfy开发者账户</title>
+    <link href="https://zade23.github.io/2025/10/23/%E3%80%90Git%E3%80%91%E5%BC%80%E5%8F%91ComfyUI%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E8%BF%9E%E9%80%9AComfy%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E6%88%B7/"/>
+    <id>https://zade23.github.io/2025/10/23/%E3%80%90Git%E3%80%91%E5%BC%80%E5%8F%91ComfyUI%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9%E8%BF%9E%E9%80%9AComfy%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E6%88%B7/</id>
+    <published>2025-10-23T09:27:53.000Z</published>
+    <updated>2025-10-23T10:17:57.804Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Comfy-org 的人员在之前为ComfyUI写的两个自定义节点仓库中提交了自动化注册表的分支合并，也算是得到了Comfy官方的认证了</p><p><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231732742.jpg" alt="Comfy官方的注册表合并分支"></p><p>欢迎大家star和fork：</p><ul><li><a href="https://github.com/zade23/ComfyUI-MoGe2">ComfyUI-MoGe2</a>：支持 MoGe-2 和 MoGe 的 ComfyUI 自定义节点。</li><li><a href="https://github.com/zade23/Comfyui-Distill-Any-Depth">Comfyui-Distill-Any-Depth</a>：使用 Distill-Any-Depth 预测图片深度和法线的 ComfyUI 节点</li></ul><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>按照官方在提交中的说明，一步一步操作即可：</p><ol><li><p>访问 ComfyUI 开发者账户页面 <a href="https://registry.comfy.org/nodes">Comfy Registry</a> ，注册并登录 ComfyUI 账户。<br>  <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231737808.jpg" alt="登录后的界面"></p></li><li><p>点进下方注册的名称，查看你的用户ID（注意，用户ID是唯一的，且不可更改），比如<code>@</code>后面的zhandroid就是我的用户ID。<br>  <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231742464.jpg" alt="用户ID"></p></li><li><p>点击 <code>+Create new key</code> 按钮，创建一个新的API Key，输入 key 的名称和描述。记住这个Key，后面会用在GitHub Actions中用于身份验证。</p></li><li><p>打开你开发的ComfyUI节点仓库，以 <a href="https://github.com/zade23/ComfyUI-MoGe2">https://github.com/zade23/ComfyUI-MoGe2</a> 为例。</p></li><li><p>找到 <code>pyproject.toml</code> 文件，并打开并编辑<code>PublisherId</code>为上面的用户ID，比如我的就是<code>zhandroid</code><br>  <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231744733.jpg" alt="修改pyproject.toml"></p></li><li><p>在GitHub仓库页面下，找到Settings &gt; Secrets and variables &gt; Actions &gt; New repository secrets，添加一个新的secrets，名称为<code>COMFY_REGISTRY_API_KEY</code>，值为ComfyUI开发者账户页面中的API Key。</p></li></ol><table><thead><tr><th><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231746332.jpg" alt="从仓库导航到变量添加的位置"></th><th><img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231751034.jpg" alt="GitHubAction中添加变量"></th></tr></thead></table><ol start="7"><li><p>提交修改，等待GitHub Action自动化注册表的工作流运行完成。<br>  <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231753789.jpg" alt="提交pyproject.toml的修改"></p></li><li><p>回到ComfyUI开发者账户页面，刷新节点列表，应该就能看到你提交的自定义节点已经成功注册到了ComfyUI的注册表中，并且仓库下的Actions也会显示正确运行✅。<br>  <img src="https://raw.githubusercontent.com/usingnamespaceX/picture_bed/main/202510231756731.jpg" alt="验证是否关联成功"></p></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;Comfy-org 的人员在之前为ComfyUI写的两个自定义节点仓库中提交了自动化注册表的分支合并，也算是得到了Comfy官方的认证了&lt;/</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>【图形学】Blender法线贴图渲染并在Unity引擎中查看</title>
@@ -441,23 +461,6 @@
     
     
     <category term="Transformers" scheme="https://zade23.github.io/tags/Transformers/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《健壮的Python》读书笔记-Day1</title>
-    <link href="https://zade23.github.io/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/"/>
-    <id>https://zade23.github.io/2024/03/20/%E3%80%8A%E5%81%A5%E5%A3%AE%E7%9A%84Python%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-Day1/</id>
-    <published>2024-03-20T13:45:05.000Z</published>
-    <updated>2024-03-20T13:45:51.762Z</updated>
-    
-    
-    
-    
-    <category term="读书笔记" scheme="https://zade23.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="Python" scheme="https://zade23.github.io/tags/Python/"/>
     
   </entry>
   
