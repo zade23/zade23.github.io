@@ -6,7 +6,7 @@
   <link href="https://zade23.github.io/atom.xml" rel="self"/>
   
   <link href="https://zade23.github.io/"/>
-  <updated>2025-12-31T06:14:45.162Z</updated>
+  <updated>2025-10-23T10:17:57.804Z</updated>
   <id>https://zade23.github.io/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>2025年总结</title>
-    <link href="https://zade23.github.io/2025/12/31/2025%E5%B9%B4%E6%80%BB%E7%BB%93/"/>
-    <id>https://zade23.github.io/2025/12/31/2025%E5%B9%B4%E6%80%BB%E7%BB%93/</id>
-    <published>2025-12-31T06:14:26.000Z</published>
-    <updated>2025-12-31T06:14:45.162Z</updated>
-    
-    <content type="html"><![CDATA[<p>2025年即将结束，回顾这一年，发生了许多值得记录的事情。 在工作方面，我完成了多个重要项目，提升了自己的专业技能。在生活方面，我尝试了新的兴趣爱好，结识了许多新朋友。<br>展望未来，我希望</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;2025年即将结束，回顾这一年，发生了许多值得记录的事情。 在工作方面，我完成了多个重要项目，提升了自己的专业技能。在生活方面，我尝试了新的兴趣爱好，结识了许多新朋友。&lt;br&gt;展望未来，我希望&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>【Git】开发ComfyUI自定义节点连通Comfy开发者账户</title>
@@ -465,6 +444,23 @@
     <category term="Python" scheme="https://zade23.github.io/tags/Python/"/>
     
     <category term="C++" scheme="https://zade23.github.io/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Transformers_FlashBack</title>
+    <link href="https://zade23.github.io/2024/03/21/Transformers-FlashBack/"/>
+    <id>https://zade23.github.io/2024/03/21/Transformers-FlashBack/</id>
+    <published>2024-03-21T02:10:26.000Z</published>
+    <updated>2024-03-21T03:01:16.819Z</updated>
+    
+    
+    
+    
+    <category term="Deeplearning" scheme="https://zade23.github.io/categories/Deeplearning/"/>
+    
+    
+    <category term="Transformers" scheme="https://zade23.github.io/tags/Transformers/"/>
     
   </entry>
   
